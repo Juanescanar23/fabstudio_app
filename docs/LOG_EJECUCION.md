@@ -57,3 +57,4 @@
 - Se documento la operacion DNS en `docs/HOSTINGER_DNS.md` y se agrego template de zona en `infra/dns/fabstudio.com.co.template.json`.
 - Se confirmo en la documentacion original que la aplicacion privada se aloja en `app.fabstudio.com.co`.
 - Se valido conexion real con Hostinger API y se audito la zona DNS actual de `fabstudio.com.co`; no se aplicaron cambios porque falta destino publico Railway para `app.fabstudio.com.co`.
+- Se configuro el remoto Git oficial `origin` hacia `git@github.com:Juanescanar23/fabstudio_app.git`.

@@ -2,9 +2,11 @@
 
 Sistema privado a la medida para FAB STUDIO: gestion de leads, clientes, proyectos, documentos, renders, portal cliente, CMS, cotizaciones asistidas por IA, PDF, auditoria y despliegue.
 
+Repositorio oficial: `git@github.com:Juanescanar23/fabstudio_app.git`
+
 ## Estado
 
-Hitos 1, 2, 3 y 4 ejecutados sobre base Laravel + Livewire + Filament. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
+Hitos 1, 2, 3, 4 y 5 ejecutados sobre base Laravel + Livewire + Filament. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
 
 El panel administrativo esta disponible en `/admin` con recursos iniciales para leads, clientes, proyectos, fases, hitos, documentos, assets visuales, cotizaciones y comentarios.
 
