@@ -20,6 +20,8 @@ class ProjectCommentResource extends Resource
 {
     protected static ?string $model = ProjectComment::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Documentos';
@@ -30,7 +32,7 @@ class ProjectCommentResource extends Resource
 
     protected static ?string $modelLabel = 'comentario';
 
-    protected static ?string $pluralModelLabel = 'comentarios';
+    protected static ?string $pluralModelLabel = 'Comentarios';
 
     protected static ?string $recordTitleAttribute = 'body';
 

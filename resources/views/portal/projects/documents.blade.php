@@ -4,7 +4,7 @@
     <section class="space-y-8">
         <div>
             <p class="text-sm font-medium text-neutral-500">{{ $project->name }}</p>
-            <h1 class="text-3xl font-semibold tracking-normal">Boveda documental</h1>
+            <h1 class="text-3xl font-semibold tracking-normal">Bóveda documental</h1>
         </div>
 
         <div class="space-y-5">
@@ -16,14 +16,14 @@
                                 <h2 class="text-xl font-semibold">{{ $document->title }}</h2>
                                 <span class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-semibold uppercase text-neutral-700">{{ $document->category }}</span>
                             </div>
-                            <p class="mt-2 text-sm text-neutral-600">{{ $document->description ?: 'Sin descripcion' }}</p>
+                            <p class="mt-2 text-sm text-neutral-600">{{ $document->description ?: 'Sin descripción' }}</p>
 
                             <div class="mt-5 space-y-3">
                                 @forelse ($document->versions as $version)
                                     <div class="flex flex-col gap-3 rounded-md border border-neutral-200 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                                         <div>
                                             <p class="font-medium">{{ $version->original_name }}</p>
-                                            <p class="text-sm text-neutral-600">Version {{ $version->version_number }} - {{ $version->created_at->format('Y-m-d') }}</p>
+                                            <p class="text-sm text-neutral-600">Versión {{ $version->version_number }} - {{ $version->created_at->format('Y-m-d') }}</p>
                                         </div>
                                         <a href="{{ route('portal.projects.documents.download', [$project, $version]) }}" class="w-fit rounded-md bg-neutral-900 px-3 py-2 text-sm font-semibold text-white hover:bg-neutral-700">
                                             Descargar
@@ -40,7 +40,7 @@
                             <input type="hidden" name="target_type" value="document">
                             <input type="hidden" name="target_id" value="{{ $document->id }}">
 
-                            <label class="block text-sm font-semibold text-neutral-800" for="decision-document-{{ $document->id }}">Decision</label>
+                            <label class="block text-sm font-semibold text-neutral-800" for="decision-document-{{ $document->id }}">Decisión</label>
                             <select id="decision-document-{{ $document->id }}" name="decision" required class="mt-2 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm">
                                 <option value="approved">Aprobar</option>
                                 <option value="changes_requested">Solicitar cambios</option>

@@ -17,24 +17,32 @@ class ProjectPhaseForm
         return $schema
             ->components([
                 Select::make('project_id')
+                    ->label('Proyecto')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 TextInput::make('name')
+                    ->label('Nombre')
                     ->required(),
                 Select::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::PHASE_STATUSES)
                     ->required()
                     ->default('pending'),
                 TextInput::make('sort_order')
+                    ->label('Orden')
                     ->required()
                     ->numeric()
                     ->default(0),
-                DatePicker::make('starts_at'),
-                DatePicker::make('due_at'),
-                DateTimePicker::make('completed_at'),
+                DatePicker::make('starts_at')
+                    ->label('Fecha de inicio'),
+                DatePicker::make('due_at')
+                    ->label('Fecha límite'),
+                DateTimePicker::make('completed_at')
+                    ->label('Completado el'),
                 Textarea::make('description')
+                    ->label('Descripción')
                     ->columnSpanFull(),
             ]);
     }

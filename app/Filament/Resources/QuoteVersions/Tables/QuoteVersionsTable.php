@@ -18,55 +18,72 @@ class QuoteVersionsTable
         return $table
             ->columns([
                 TextColumn::make('quote.title')
+                    ->label('Cotización')
                     ->searchable(),
                 TextColumn::make('createdBy.name')
+                    ->label('Creada por')
                     ->searchable(),
                 TextColumn::make('version_number')
+                    ->label('Número de versión')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('ai_model')
+                    ->label('Modelo IA')
                     ->searchable(),
                 TextColumn::make('ai_prompt_hash')
+                    ->label('Hash del prompt IA')
                     ->searchable(),
                 TextColumn::make('pdf_path')
+                    ->label('PDF')
                     ->searchable(),
                 TextColumn::make('subtotal')
+                    ->label('Subtotal')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('tax')
+                    ->label('Impuestos')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('discount')
+                    ->label('Descuento')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('total')
+                    ->label('Total')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('reviewed_at')
+                    ->label('Revisada el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('approved_at')
+                    ->label('Aprobada el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Creada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('quote')
+                    ->label('Cotización')
                     ->relationship('quote', 'title')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::QUOTE_STATUSES),
             ])
             ->recordActions([

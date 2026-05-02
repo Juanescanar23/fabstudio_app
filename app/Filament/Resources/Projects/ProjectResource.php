@@ -22,9 +22,11 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Operacion';
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
 
     protected static ?int $navigationSort = 30;
 
@@ -32,7 +34,7 @@ class ProjectResource extends Resource
 
     protected static ?string $modelLabel = 'proyecto';
 
-    protected static ?string $pluralModelLabel = 'proyectos';
+    protected static ?string $pluralModelLabel = 'Proyectos';
 
     protected static ?string $recordTitleAttribute = 'name';
 

@@ -13,37 +13,51 @@ class VisualAssetInfolist
         return $schema
             ->components([
                 TextEntry::make('project.name')
-                    ->label('Project'),
+                    ->label('Proyecto'),
                 TextEntry::make('uploadedBy.name')
-                    ->label('Uploaded by')
+                    ->label('Subido por')
                     ->placeholder('-'),
-                TextEntry::make('title'),
-                TextEntry::make('type'),
-                TextEntry::make('visibility'),
-                TextEntry::make('status'),
+                TextEntry::make('title')
+                    ->label('Título'),
+                TextEntry::make('type')
+                    ->label('Tipo'),
+                TextEntry::make('visibility')
+                    ->label('Visibilidad'),
+                TextEntry::make('status')
+                    ->label('Estado'),
                 TextEntry::make('file_path')
+                    ->label('Archivo')
                     ->placeholder('-'),
                 TextEntry::make('preview_path')
+                    ->label('Vista previa')
                     ->placeholder('-'),
                 TextEntry::make('external_url')
+                    ->label('URL externa')
                     ->placeholder('-'),
                 TextEntry::make('mime_type')
+                    ->label('Tipo MIME')
                     ->placeholder('-'),
                 TextEntry::make('size')
+                    ->label('Tamaño')
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('metadata')
+                    ->label('Metadatos')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('sort_order')
+                    ->label('Orden')
                     ->numeric(),
                 TextEntry::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('deleted_at')
+                    ->label('Eliminado')
                     ->dateTime()
                     ->visible(fn (VisualAsset $record): bool => $record->trashed()),
             ]);

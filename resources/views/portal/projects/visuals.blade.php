@@ -1,10 +1,10 @@
-@extends('portal.layout', ['title' => 'Galeria - '.$project->name, 'project' => $project])
+@extends('portal.layout', ['title' => 'Galería - '.$project->name, 'project' => $project])
 
 @section('content')
     <section class="space-y-8">
         <div>
             <p class="text-sm font-medium text-neutral-500">{{ $project->name }}</p>
-            <h1 class="text-3xl font-semibold tracking-normal">Galeria visual</h1>
+            <h1 class="text-3xl font-semibold tracking-normal">Galería visual</h1>
         </div>
 
         <div class="grid gap-5 xl:grid-cols-2">
@@ -54,7 +54,7 @@
                             <input type="hidden" name="target_type" value="visual_asset">
                             <input type="hidden" name="target_id" value="{{ $asset->id }}">
 
-                            <label class="block text-sm font-semibold text-neutral-800" for="decision-asset-{{ $asset->id }}">Decision</label>
+                            <label class="block text-sm font-semibold text-neutral-800" for="decision-asset-{{ $asset->id }}">Decisión</label>
                             <select id="decision-asset-{{ $asset->id }}" name="decision" required class="mt-2 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm">
                                 <option value="approved">Aprobar</option>
                                 <option value="changes_requested">Solicitar cambios</option>

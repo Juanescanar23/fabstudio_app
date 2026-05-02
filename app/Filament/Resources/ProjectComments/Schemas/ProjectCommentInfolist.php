@@ -12,31 +12,41 @@ class ProjectCommentInfolist
         return $schema
             ->components([
                 TextEntry::make('project.name')
-                    ->label('Project'),
+                    ->label('Proyecto'),
                 TextEntry::make('user.name')
-                    ->label('User')
+                    ->label('Usuario')
                     ->placeholder('-'),
                 TextEntry::make('commentable_type')
+                    ->label('Tipo de entregable')
                     ->placeholder('-'),
                 TextEntry::make('commentable_id')
+                    ->label('ID del entregable')
                     ->numeric()
                     ->placeholder('-'),
-                TextEntry::make('type'),
-                TextEntry::make('visibility'),
+                TextEntry::make('type')
+                    ->label('Tipo'),
+                TextEntry::make('visibility')
+                    ->label('Visibilidad'),
                 TextEntry::make('body')
+                    ->label('Comentario')
                     ->columnSpanFull(),
                 TextEntry::make('decision')
+                    ->label('Decisión')
                     ->placeholder('-'),
                 TextEntry::make('decided_at')
+                    ->label('Decidido el')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('metadata')
+                    ->label('Metadatos')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->placeholder('-'),
             ]);

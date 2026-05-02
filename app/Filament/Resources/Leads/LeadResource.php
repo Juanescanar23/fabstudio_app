@@ -20,17 +20,19 @@ class LeadResource extends Resource
 {
     protected static ?string $model = Lead::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Operacion';
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
 
     protected static ?int $navigationSort = 20;
 
-    protected static ?string $navigationLabel = 'Leads';
+    protected static ?string $navigationLabel = 'Prospectos';
 
-    protected static ?string $modelLabel = 'lead';
+    protected static ?string $modelLabel = 'prospecto';
 
-    protected static ?string $pluralModelLabel = 'leads';
+    protected static ?string $pluralModelLabel = 'Prospectos';
 
     protected static ?string $recordTitleAttribute = 'name';
 

@@ -22,9 +22,11 @@ class ClientResource extends Resource
 {
     protected static ?string $model = Client::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Operacion';
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
 
     protected static ?int $navigationSort = 10;
 
@@ -32,7 +34,7 @@ class ClientResource extends Resource
 
     protected static ?string $modelLabel = 'cliente';
 
-    protected static ?string $pluralModelLabel = 'clientes';
+    protected static ?string $pluralModelLabel = 'Clientes';
 
     protected static ?string $recordTitleAttribute = 'name';
 

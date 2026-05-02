@@ -21,53 +21,70 @@ class ProjectsTable
         return $table
             ->columns([
                 TextColumn::make('client.name')
+                    ->label('Cliente')
                     ->searchable(),
                 TextColumn::make('lead.name')
+                    ->label('Prospecto')
                     ->searchable(),
                 TextColumn::make('code')
+                    ->label('Código')
                     ->searchable(),
                 TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 TextColumn::make('typology')
+                    ->label('Tipología')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('current_phase')
+                    ->label('Fase actual')
                     ->searchable(),
                 TextColumn::make('location')
+                    ->label('Ubicación')
                     ->searchable(),
                 TextColumn::make('budget_estimate')
+                    ->label('Presupuesto estimado')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('starts_at')
+                    ->label('Inicio')
                     ->date()
                     ->sortable(),
                 TextColumn::make('ends_at')
+                    ->label('Cierre')
                     ->date()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_at')
+                    ->label('Eliminado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('client')
+                    ->label('Cliente')
                     ->relationship('client', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::PROJECT_STATUSES),
-                TrashedFilter::make(),
+                TrashedFilter::make()
+                    ->label('Registros eliminados'),
             ])
             ->recordActions([
                 ViewAction::make(),

@@ -21,67 +21,88 @@ class QuotesTable
         return $table
             ->columns([
                 TextColumn::make('project.name')
+                    ->label('Proyecto')
                     ->searchable(),
                 TextColumn::make('client.name')
+                    ->label('Cliente')
                     ->searchable(),
                 TextColumn::make('createdBy.name')
+                    ->label('Creada por')
                     ->searchable(),
                 TextColumn::make('quote_number')
+                    ->label('Número de cotización')
                     ->searchable(),
                 TextColumn::make('title')
+                    ->label('Título')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('currency')
+                    ->label('Moneda')
                     ->searchable(),
                 TextColumn::make('subtotal')
+                    ->label('Subtotal')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('tax')
+                    ->label('Impuestos')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('discount')
+                    ->label('Descuento')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('total')
+                    ->label('Total')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('valid_until')
+                    ->label('Válida hasta')
                     ->date()
                     ->sortable(),
                 TextColumn::make('sent_at')
+                    ->label('Enviada el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('approved_at')
+                    ->label('Aprobada el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Creada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_at')
+                    ->label('Eliminada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('project')
+                    ->label('Proyecto')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('client')
+                    ->label('Cliente')
                     ->relationship('client', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::QUOTE_STATUSES),
-                TrashedFilter::make(),
+                TrashedFilter::make()
+                    ->label('Registros eliminados'),
             ])
             ->recordActions([
                 ViewAction::make(),

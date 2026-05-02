@@ -12,32 +12,42 @@ class LeadInfolist
         return $schema
             ->components([
                 TextEntry::make('client.name')
-                    ->label('Client')
+                    ->label('Cliente')
                     ->placeholder('-'),
-                TextEntry::make('name'),
+                TextEntry::make('name')
+                    ->label('Nombre'),
                 TextEntry::make('email')
-                    ->label('Email')
+                    ->label('Correo electrónico')
                     ->placeholder('-'),
                 TextEntry::make('phone')
+                    ->label('Teléfono')
                     ->placeholder('-'),
                 TextEntry::make('source')
+                    ->label('Fuente')
                     ->placeholder('-'),
-                TextEntry::make('status'),
+                TextEntry::make('status')
+                    ->label('Estado'),
                 TextEntry::make('interest')
+                    ->label('Interés')
                     ->placeholder('-'),
                 TextEntry::make('message')
+                    ->label('Mensaje')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('metadata')
+                    ->label('Metadatos')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('converted_at')
+                    ->label('Convertido el')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->placeholder('-'),
             ]);

@@ -61,6 +61,7 @@ Objetivo: portal privado para seguimiento, documentos, renders y aprobaciones.
 - [x] Visor base para modelos compatibles.
 - [x] Comentarios y aprobaciones por entregable.
 - [x] Validar aislamiento Cliente A / Cliente B.
+- [x] Localizar plataforma, portal, autenticacion, validaciones y textos base al espanol.
 
 ## Hito 5 - Landing-App, CMS y Marca
 

@@ -22,6 +22,8 @@ class QuoteResource extends Resource
 {
     protected static ?string $model = Quote::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Cotizaciones';
@@ -30,9 +32,9 @@ class QuoteResource extends Resource
 
     protected static ?string $navigationLabel = 'Cotizaciones';
 
-    protected static ?string $modelLabel = 'cotizacion';
+    protected static ?string $modelLabel = 'cotización';
 
-    protected static ?string $pluralModelLabel = 'cotizaciones';
+    protected static ?string $pluralModelLabel = 'Cotizaciones';
 
     protected static ?string $recordTitleAttribute = 'title';
 

@@ -20,9 +20,11 @@ class MilestoneResource extends Resource
 {
     protected static ?string $model = Milestone::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Operacion';
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
 
     protected static ?int $navigationSort = 50;
 
@@ -30,7 +32,7 @@ class MilestoneResource extends Resource
 
     protected static ?string $modelLabel = 'hito';
 
-    protected static ?string $pluralModelLabel = 'hitos';
+    protected static ?string $pluralModelLabel = 'Hitos';
 
     protected static ?string $recordTitleAttribute = 'title';
 

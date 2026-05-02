@@ -52,7 +52,7 @@
                                     <div class="grid gap-2 border-l-2 border-neutral-300 pl-4 md:grid-cols-[1fr_auto]">
                                         <div>
                                             <p class="font-medium">{{ $milestone->title }}</p>
-                                            <p class="text-sm text-neutral-600">{{ $milestone->description ?: 'Sin descripcion' }}</p>
+                                            <p class="text-sm text-neutral-600">{{ $milestone->description ?: 'Sin descripción' }}</p>
                                         </div>
                                         <span class="text-sm font-medium text-neutral-700">{{ $milestone->status }}</span>
                                     </div>
@@ -89,7 +89,7 @@
 
                 <div class="rounded-md border border-neutral-200 bg-white p-5">
                     <div class="flex items-center justify-between gap-4">
-                        <h2 class="text-lg font-semibold">Galeria visual</h2>
+                        <h2 class="text-lg font-semibold">Galería visual</h2>
                         <a href="{{ route('portal.projects.visuals', $project) }}" class="text-sm font-semibold text-neutral-900 underline">Ver</a>
                     </div>
                     <div class="mt-4 space-y-3">

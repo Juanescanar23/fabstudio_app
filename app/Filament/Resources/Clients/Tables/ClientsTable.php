@@ -21,43 +21,56 @@ class ClientsTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 TextColumn::make('type')
+                    ->label('Tipo')
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email')
+                    ->label('Correo electrónico')
                     ->searchable(),
                 TextColumn::make('phone')
+                    ->label('Teléfono')
                     ->searchable(),
                 TextColumn::make('identification')
+                    ->label('Identificación')
                     ->searchable(),
                 TextColumn::make('city')
+                    ->label('Ciudad')
                     ->searchable(),
                 TextColumn::make('address')
+                    ->label('Dirección')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('deleted_at')
+                    ->label('Eliminado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('type')
+                    ->label('Tipo')
                     ->options(FabStudioOptions::CLIENT_TYPES),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::CLIENT_STATUSES),
-                TrashedFilter::make(),
+                TrashedFilter::make()
+                    ->label('Registros eliminados'),
             ])
             ->recordActions([
                 ViewAction::make(),

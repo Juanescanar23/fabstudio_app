@@ -20,17 +20,19 @@ class DocumentVersionResource extends Resource
 {
     protected static ?string $model = DocumentVersion::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Documentos';
 
     protected static ?int $navigationSort = 20;
 
-    protected static ?string $navigationLabel = 'Versiones documento';
+    protected static ?string $navigationLabel = 'Versiones de documento';
 
-    protected static ?string $modelLabel = 'version de documento';
+    protected static ?string $modelLabel = 'versión de documento';
 
-    protected static ?string $pluralModelLabel = 'versiones de documento';
+    protected static ?string $pluralModelLabel = 'Versiones de documento';
 
     protected static ?string $recordTitleAttribute = 'version_number';
 

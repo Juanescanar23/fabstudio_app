@@ -13,24 +13,32 @@ class ProjectDocumentInfolist
         return $schema
             ->components([
                 TextEntry::make('project.name')
-                    ->label('Project'),
+                    ->label('Proyecto'),
                 TextEntry::make('uploadedBy.name')
-                    ->label('Uploaded by')
+                    ->label('Subido por')
                     ->placeholder('-'),
-                TextEntry::make('title'),
-                TextEntry::make('category'),
-                TextEntry::make('visibility'),
-                TextEntry::make('status'),
+                TextEntry::make('title')
+                    ->label('Título'),
+                TextEntry::make('category')
+                    ->label('Categoría'),
+                TextEntry::make('visibility')
+                    ->label('Visibilidad'),
+                TextEntry::make('status')
+                    ->label('Estado'),
                 TextEntry::make('description')
+                    ->label('Descripción')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('deleted_at')
+                    ->label('Eliminado')
                     ->dateTime()
                     ->visible(fn (ProjectDocument $record): bool => $record->trashed()),
             ]);

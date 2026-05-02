@@ -13,39 +13,52 @@ class ProjectInfolist
         return $schema
             ->components([
                 TextEntry::make('client.name')
-                    ->label('Client'),
+                    ->label('Cliente'),
                 TextEntry::make('lead.name')
-                    ->label('Lead')
+                    ->label('Prospecto')
                     ->placeholder('-'),
                 TextEntry::make('code')
+                    ->label('Código')
                     ->placeholder('-'),
-                TextEntry::make('name'),
+                TextEntry::make('name')
+                    ->label('Nombre'),
                 TextEntry::make('typology')
+                    ->label('Tipología')
                     ->placeholder('-'),
-                TextEntry::make('status'),
+                TextEntry::make('status')
+                    ->label('Estado'),
                 TextEntry::make('current_phase')
+                    ->label('Fase actual')
                     ->placeholder('-'),
                 TextEntry::make('location')
+                    ->label('Ubicación')
                     ->placeholder('-'),
                 TextEntry::make('description')
+                    ->label('Descripción')
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('budget_estimate')
+                    ->label('Presupuesto estimado')
                     ->numeric()
                     ->placeholder('-'),
                 TextEntry::make('starts_at')
+                    ->label('Fecha de inicio')
                     ->date()
                     ->placeholder('-'),
                 TextEntry::make('ends_at')
+                    ->label('Fecha de cierre')
                     ->date()
                     ->placeholder('-'),
                 TextEntry::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('deleted_at')
+                    ->label('Eliminado')
                     ->dateTime()
                     ->visible(fn (Project $record): bool => $record->trashed()),
             ]);

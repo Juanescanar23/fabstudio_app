@@ -22,17 +22,19 @@ class VisualAssetResource extends Resource
 {
     protected static ?string $model = VisualAsset::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Documentos';
 
     protected static ?int $navigationSort = 30;
 
-    protected static ?string $navigationLabel = 'Assets visuales';
+    protected static ?string $navigationLabel = 'Recursos visuales';
 
-    protected static ?string $modelLabel = 'asset visual';
+    protected static ?string $modelLabel = 'recurso visual';
 
-    protected static ?string $pluralModelLabel = 'assets visuales';
+    protected static ?string $pluralModelLabel = 'Recursos visuales';
 
     protected static ?string $recordTitleAttribute = 'title';
 

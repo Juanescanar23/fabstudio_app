@@ -22,6 +22,8 @@ class ProjectDocumentResource extends Resource
 {
     protected static ?string $model = ProjectDocument::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Documentos';
@@ -32,7 +34,7 @@ class ProjectDocumentResource extends Resource
 
     protected static ?string $modelLabel = 'documento';
 
-    protected static ?string $pluralModelLabel = 'documentos';
+    protected static ?string $pluralModelLabel = 'Documentos';
 
     protected static ?string $recordTitleAttribute = 'title';
 

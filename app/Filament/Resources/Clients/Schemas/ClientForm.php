@@ -15,24 +15,32 @@ class ClientForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label('Nombre')
                     ->required(),
                 Select::make('type')
+                    ->label('Tipo')
                     ->options(FabStudioOptions::CLIENT_TYPES)
                     ->required()
                     ->default('individual'),
                 TextInput::make('email')
-                    ->label('Email')
+                    ->label('Correo electrónico')
                     ->email(),
                 TextInput::make('phone')
+                    ->label('Teléfono')
                     ->tel(),
-                TextInput::make('identification'),
-                TextInput::make('city'),
-                TextInput::make('address'),
+                TextInput::make('identification')
+                    ->label('Identificación'),
+                TextInput::make('city')
+                    ->label('Ciudad'),
+                TextInput::make('address')
+                    ->label('Dirección'),
                 Select::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::CLIENT_STATUSES)
                     ->required()
                     ->default('active'),
                 Textarea::make('notes')
+                    ->label('Notas')
                     ->columnSpanFull(),
             ]);
     }

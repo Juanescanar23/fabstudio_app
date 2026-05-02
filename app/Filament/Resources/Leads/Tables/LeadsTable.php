@@ -18,40 +18,51 @@ class LeadsTable
         return $table
             ->columns([
                 TextColumn::make('client.name')
+                    ->label('Cliente')
                     ->searchable(),
                 TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email')
+                    ->label('Correo electrónico')
                     ->searchable(),
                 TextColumn::make('phone')
+                    ->label('Teléfono')
                     ->searchable(),
                 TextColumn::make('source')
+                    ->label('Fuente')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('interest')
+                    ->label('Interés')
                     ->searchable(),
                 TextColumn::make('converted_at')
+                    ->label('Convertido el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('client')
+                    ->label('Cliente')
                     ->relationship('client', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::LEAD_STATUSES),
             ])
             ->recordActions([

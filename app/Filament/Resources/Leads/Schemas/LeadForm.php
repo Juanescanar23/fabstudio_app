@@ -17,29 +17,38 @@ class LeadForm
         return $schema
             ->components([
                 Select::make('client_id')
+                    ->label('Cliente')
                     ->relationship('client', 'name')
                     ->searchable()
                     ->preload(),
                 TextInput::make('name')
+                    ->label('Nombre')
                     ->required(),
                 TextInput::make('email')
-                    ->label('Email')
+                    ->label('Correo electrónico')
                     ->email(),
                 TextInput::make('phone')
+                    ->label('Teléfono')
                     ->tel(),
-                TextInput::make('source'),
+                TextInput::make('source')
+                    ->label('Fuente'),
                 Select::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::LEAD_STATUSES)
                     ->required()
                     ->default('new'),
-                TextInput::make('interest'),
+                TextInput::make('interest')
+                    ->label('Interés'),
                 Textarea::make('message')
+                    ->label('Mensaje')
                     ->columnSpanFull(),
                 KeyValue::make('metadata')
+                    ->label('Metadatos')
                     ->columnSpanFull()
                     ->keyLabel('Clave')
                     ->valueLabel('Valor'),
-                DateTimePicker::make('converted_at'),
+                DateTimePicker::make('converted_at')
+                    ->label('Convertido el'),
             ]);
     }
 }

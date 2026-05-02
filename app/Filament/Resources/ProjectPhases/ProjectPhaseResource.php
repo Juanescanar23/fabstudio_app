@@ -20,9 +20,11 @@ class ProjectPhaseResource extends Resource
 {
     protected static ?string $model = ProjectPhase::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Operacion';
+    protected static string|\UnitEnum|null $navigationGroup = 'Operación';
 
     protected static ?int $navigationSort = 40;
 
@@ -30,7 +32,7 @@ class ProjectPhaseResource extends Resource
 
     protected static ?string $modelLabel = 'fase';
 
-    protected static ?string $pluralModelLabel = 'fases';
+    protected static ?string $pluralModelLabel = 'Fases';
 
     protected static ?string $recordTitleAttribute = 'name';
 

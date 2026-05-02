@@ -1,4 +1,4 @@
-@extends('portal.layout', ['title' => 'Portal Cliente'])
+@extends('portal.layout', ['title' => 'Portal cliente'])
 
 @section('content')
     <section class="space-y-8">
@@ -32,7 +32,7 @@
                     <a href="{{ route('portal.projects.show', $project) }}" class="grid gap-4 px-5 py-5 hover:bg-neutral-50 md:grid-cols-[1fr_auto]">
                         <div>
                             <p class="text-lg font-semibold">{{ $project->name }}</p>
-                            <p class="mt-1 text-sm text-neutral-600">{{ $project->code }} - {{ $project->location ?: 'Ubicacion pendiente' }}</p>
+                            <p class="mt-1 text-sm text-neutral-600">{{ $project->code }} - {{ $project->location ?: 'Ubicación pendiente' }}</p>
                         </div>
                         <div class="flex flex-wrap items-center gap-2 text-sm">
                             <span class="rounded-md bg-neutral-100 px-2 py-1 font-medium text-neutral-700">{{ $project->status }}</span>

@@ -155,12 +155,12 @@ class ClientPortalController extends Controller
             'commentable_id' => $commentable?->getKey(),
             'type' => 'approval',
             'visibility' => 'client',
-            'body' => $validated['body'] ?: 'Decision registrada desde portal cliente.',
+            'body' => $validated['body'] ?: 'Decisión registrada desde portal cliente.',
             'decision' => $validated['decision'],
             'decided_at' => now(),
         ]);
 
-        return back()->with('status', 'Decision registrada.');
+        return back()->with('status', 'Decisión registrada.');
     }
 
     private function clientFor(User $user): Client

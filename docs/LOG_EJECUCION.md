@@ -38,3 +38,7 @@
 - Se actualizo `DemoDataSeeder` para crear usuario cliente demo con rol `client`.
 - Se agregaron pruebas de aislamiento Cliente A / Cliente B, visibilidad de entregables y descarga privada.
 - Suite verificada tras Hito 4: 40 tests pasaron, 96 assertions.
+- Se corrigio la localizacion de la plataforma para cliente 100% en espanol: recursos Filament, portal cliente, autenticacion, ajustes de cuenta, mensajes base de Laravel y portada inicial.
+- Se cambio el locale por defecto de Laravel a `es` y se agregaron archivos base `lang/es` para autenticacion, contrasenas, paginacion y validaciones.
+- Se actualizo la suite de pruebas para validar textos en espanol.
+- Suite verificada tras localizacion: 40 tests pasaron, 96 assertions.

@@ -17,27 +17,35 @@ class MilestoneForm
         return $schema
             ->components([
                 Select::make('project_id')
+                    ->label('Proyecto')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 Select::make('project_phase_id')
+                    ->label('Fase')
                     ->relationship('phase', 'name')
                     ->searchable()
                     ->preload(),
                 TextInput::make('title')
+                    ->label('Título')
                     ->required(),
                 Select::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::PHASE_STATUSES)
                     ->required()
                     ->default('pending'),
                 TextInput::make('sort_order')
+                    ->label('Orden')
                     ->required()
                     ->numeric()
                     ->default(0),
-                DatePicker::make('due_at'),
-                DateTimePicker::make('completed_at'),
+                DatePicker::make('due_at')
+                    ->label('Fecha límite'),
+                DateTimePicker::make('completed_at')
+                    ->label('Completado el'),
                 Textarea::make('description')
+                    ->label('Descripción')
                     ->columnSpanFull(),
             ]);
     }

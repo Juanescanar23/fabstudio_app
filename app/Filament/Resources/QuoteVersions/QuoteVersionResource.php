@@ -20,17 +20,19 @@ class QuoteVersionResource extends Resource
 {
     protected static ?string $model = QuoteVersion::class;
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static string|\UnitEnum|null $navigationGroup = 'Cotizaciones';
 
     protected static ?int $navigationSort = 20;
 
-    protected static ?string $navigationLabel = 'Versiones cotizacion';
+    protected static ?string $navigationLabel = 'Versiones de cotización';
 
-    protected static ?string $modelLabel = 'version de cotizacion';
+    protected static ?string $modelLabel = 'versión de cotización';
 
-    protected static ?string $pluralModelLabel = 'versiones de cotizacion';
+    protected static ?string $pluralModelLabel = 'Versiones de cotización';
 
     protected static ?string $recordTitleAttribute = 'version_number';
 

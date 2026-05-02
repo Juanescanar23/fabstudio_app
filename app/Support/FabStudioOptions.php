@@ -24,7 +24,7 @@ final class FabStudioOptions
     ];
 
     public const PROJECT_STATUSES = [
-        'planning' => 'Planeacion',
+        'planning' => 'Planeación',
         'active' => 'Activo',
         'on_hold' => 'En pausa',
         'completed' => 'Completado',
@@ -41,9 +41,9 @@ final class FabStudioOptions
     public const DOCUMENT_CATEGORIES = [
         'general' => 'General',
         'contract' => 'Contrato',
-        'design' => 'Diseno',
-        'technical' => 'Tecnico',
-        'quote' => 'Cotizacion',
+        'design' => 'Diseño',
+        'technical' => 'Técnico',
+        'quote' => 'Cotización',
         'invoice' => 'Factura',
     ];
 
@@ -54,7 +54,7 @@ final class FabStudioOptions
 
     public const PUBLISH_STATUSES = [
         'draft' => 'Borrador',
-        'review' => 'En revision',
+        'review' => 'En revisión',
         'published' => 'Publicado',
         'archived' => 'Archivado',
     ];
@@ -69,7 +69,7 @@ final class FabStudioOptions
 
     public const QUOTE_STATUSES = [
         'draft' => 'Borrador',
-        'review' => 'En revision',
+        'review' => 'En revisión',
         'sent' => 'Enviada',
         'approved' => 'Aprobada',
         'rejected' => 'Rechazada',
@@ -83,9 +83,9 @@ final class FabStudioOptions
 
     public const COMMENT_TYPES = [
         'comment' => 'Comentario',
-        'approval' => 'Aprobacion',
+        'approval' => 'Aprobación',
         'request_change' => 'Solicitud de cambio',
-        'status_update' => 'Actualizacion de estado',
+        'status_update' => 'Actualización de estado',
     ];
 
     public const DECISIONS = [

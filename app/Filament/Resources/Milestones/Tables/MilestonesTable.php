@@ -18,43 +18,55 @@ class MilestonesTable
         return $table
             ->columns([
                 TextColumn::make('project.name')
+                    ->label('Proyecto')
                     ->searchable(),
                 TextColumn::make('phase.name')
+                    ->label('Fase')
                     ->searchable(),
                 TextColumn::make('title')
+                    ->label('Título')
                     ->searchable(),
                 TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('sort_order')
+                    ->label('Orden')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('due_at')
+                    ->label('Fecha límite')
                     ->date()
                     ->sortable(),
                 TextColumn::make('completed_at')
+                    ->label('Completado el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Creado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('project')
+                    ->label('Proyecto')
                     ->relationship('project', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('phase')
+                    ->label('Fase')
                     ->relationship('phase', 'name')
                     ->searchable()
                     ->preload(),
                 SelectFilter::make('status')
+                    ->label('Estado')
                     ->options(FabStudioOptions::PHASE_STATUSES),
             ])
             ->recordActions([

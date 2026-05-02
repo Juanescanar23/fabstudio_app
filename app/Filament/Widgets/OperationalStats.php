@@ -38,14 +38,14 @@ class OperationalStats extends BaseWidget
             Stat::make('Proyectos activos', $activeProjects)
                 ->description(Client::query()->count().' clientes registrados')
                 ->color('success'),
-            Stat::make('Leads abiertos', $openLeads)
-                ->description('Pendientes de gestion comercial')
+            Stat::make('Prospectos abiertos', $openLeads)
+                ->description('Pendientes de gestión comercial')
                 ->color('info'),
             Stat::make('Hitos pendientes', $pendingMilestones)
                 ->description('Sin fecha de cierre registrada')
                 ->color($pendingMilestones > 0 ? 'warning' : 'success'),
             Stat::make('Cotizaciones abiertas', $quotesInReview)
-                ->description('Borrador, revision o enviadas')
+                ->description('Borrador, revisión o enviadas')
                 ->color('gray'),
         ];
     }

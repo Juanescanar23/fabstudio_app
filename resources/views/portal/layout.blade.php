@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        @include('partials.head', ['title' => $title ?? 'Portal Cliente'])
+        @include('partials.head', ['title' => $title ?? 'Portal cliente'])
     </head>
     <body class="min-h-screen bg-neutral-50 text-neutral-950 antialiased">
         <div class="min-h-screen">
@@ -51,7 +51,7 @@
                                 href="{{ route('portal.projects.visuals', $project) }}"
                                 class="block rounded-md px-3 py-2 text-sm font-medium {{ request()->routeIs('portal.projects.visuals') ? 'bg-neutral-900 text-white' : 'text-neutral-700 hover:bg-neutral-100' }}"
                             >
-                                Galeria visual
+                                Galería visual
                             </a>
                         </div>
                     @endisset
