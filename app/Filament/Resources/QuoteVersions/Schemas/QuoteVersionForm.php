@@ -4,9 +4,8 @@ namespace App\Filament\Resources\QuoteVersions\Schemas;
 
 use App\Support\FabStudioOptions;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -22,9 +21,24 @@ class QuoteVersionForm
                     ->searchable()
                     ->preload()
                     ->required(),
+                Select::make('quote_template_id')
+                    ->label('Plantilla')
+                    ->relationship('template', 'name')
+                    ->searchable()
+                    ->preload(),
                 Select::make('created_by_id')
                     ->label('Creada por')
                     ->relationship('createdBy', 'name')
+                    ->searchable()
+                    ->preload(),
+                Select::make('reviewed_by_id')
+                    ->label('Revisada por')
+                    ->relationship('reviewedBy', 'name')
+                    ->searchable()
+                    ->preload(),
+                Select::make('approved_by_id')
+                    ->label('Aprobada por')
+                    ->relationship('approvedBy', 'name')
                     ->searchable()
                     ->preload(),
                 TextInput::make('version_number')
@@ -36,19 +50,24 @@ class QuoteVersionForm
                     ->options(FabStudioOptions::QUOTE_STATUSES)
                     ->required()
                     ->default('draft'),
-                KeyValue::make('content')
+                Textarea::make('content')
                     ->label('Contenido')
                     ->columnSpanFull()
-                    ->keyLabel('Sección')
-                    ->valueLabel('Contenido'),
+                    ->rows(12)
+                    ->formatStateUsing(fn ($state): ?string => is_array($state)
+                        ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+                        : $state)
+                    ->dehydrateStateUsing(fn ($state): ?array => blank($state) ? null : json_decode((string) $state, true))
+                    ->rules(['nullable', 'json']),
                 TextInput::make('ai_model')
                     ->label('Modelo IA'),
                 TextInput::make('ai_prompt_hash')
                     ->label('Hash del prompt IA'),
-                FileUpload::make('pdf_path')
-                    ->label('PDF')
-                    ->disk('local')
-                    ->directory('quotes'),
+                TextInput::make('pdf_path')
+                    ->label('Ruta PDF'),
+                TextInput::make('pdf_disk')
+                    ->label('Disco PDF')
+                    ->default('local'),
                 TextInput::make('subtotal')
                     ->label('Subtotal')
                     ->required()
@@ -73,6 +92,8 @@ class QuoteVersionForm
                     ->label('Revisada el'),
                 DateTimePicker::make('approved_at')
                     ->label('Aprobada el'),
+                DateTimePicker::make('exported_at')
+                    ->label('Exportada el'),
             ]);
     }
 }

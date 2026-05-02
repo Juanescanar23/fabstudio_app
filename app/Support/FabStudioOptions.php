@@ -70,10 +70,26 @@ final class FabStudioOptions
     public const QUOTE_STATUSES = [
         'draft' => 'Borrador',
         'review' => 'En revisión',
+        'reviewed' => 'Revisada',
         'sent' => 'Enviada',
         'approved' => 'Aprobada',
+        'exported' => 'Exportada',
         'rejected' => 'Rechazada',
         'expired' => 'Vencida',
+    ];
+
+    public const QUOTE_TEMPLATE_TYPES = [
+        'design' => 'Diseño arquitectónico',
+        'consulting' => 'Consultoría',
+        'visualization' => 'Visualización',
+        'construction' => 'Construcción',
+        'custom' => 'Personalizada',
+    ];
+
+    public const TEMPLATE_STATUSES = [
+        'active' => 'Activa',
+        'inactive' => 'Inactiva',
+        'archived' => 'Archivada',
     ];
 
     public const CURRENCIES = [
@@ -97,7 +113,7 @@ final class FabStudioOptions
     public static function statusColor(?string $state): string
     {
         return match ($state) {
-            'active', 'approved', 'completed', 'converted', 'published' => 'success',
+            'active', 'approved', 'completed', 'converted', 'published', 'reviewed', 'exported' => 'success',
             'planning', 'new', 'draft', 'pending', 'review' => 'gray',
             'contacted', 'qualified', 'in_progress', 'sent' => 'info',
             'on_hold', 'blocked', 'prospect', 'expired', 'changes_requested' => 'warning',

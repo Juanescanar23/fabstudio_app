@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\QuoteVersions\Pages;
 
+use App\Filament\Resources\QuoteVersions\Actions\QuoteVersionWorkflowActions;
 use App\Filament\Resources\QuoteVersions\QuoteVersionResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
@@ -14,6 +15,10 @@ class EditQuoteVersion extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            QuoteVersionWorkflowActions::markReviewed(),
+            QuoteVersionWorkflowActions::approve(),
+            QuoteVersionWorkflowActions::exportPdf(),
+            QuoteVersionWorkflowActions::downloadPdf(),
             ViewAction::make(),
             DeleteAction::make(),
         ];

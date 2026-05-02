@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Quotes\Pages;
 
+use App\Filament\Resources\Quotes\Actions\CreateQuoteVersionFromTemplateAction;
 use App\Filament\Resources\Quotes\QuoteResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
@@ -13,6 +14,7 @@ class ViewQuote extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
+            CreateQuoteVersionFromTemplateAction::make(),
             EditAction::make(),
         ];
     }

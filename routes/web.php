@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\QuoteVersionPdfController;
 use App\Http\Controllers\Portal\ClientPortalController;
 use App\Http\Controllers\PublicSite\PublicSiteController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,13 @@ Route::controller(PublicSiteController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
+
+Route::middleware(['auth'])
+    ->prefix('admin/quote-versions')
+    ->name('admin.quote-versions.')
+    ->group(function () {
+        Route::get('/{version}/pdf', QuoteVersionPdfController::class)->name('pdf');
+    });
 
 Route::middleware(['auth'])->prefix('portal')->name('portal.')->controller(ClientPortalController::class)->group(function () {
     Route::get('/', 'index')->name('dashboard');

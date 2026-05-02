@@ -28,6 +28,7 @@ class Quote extends Model
         'valid_until',
         'sent_at',
         'approved_at',
+        'exported_at',
         'notes',
         'metadata',
     ];
@@ -42,6 +43,7 @@ class Quote extends Model
             'valid_until' => 'date',
             'sent_at' => 'datetime',
             'approved_at' => 'datetime',
+            'exported_at' => 'datetime',
             'metadata' => 'array',
         ];
     }
@@ -64,6 +66,11 @@ class Quote extends Model
     public function versions(): HasMany
     {
         return $this->hasMany(QuoteVersion::class)->orderByDesc('version_number');
+    }
+
+    public function latestVersion()
+    {
+        return $this->hasOne(QuoteVersion::class)->latestOfMany('version_number');
     }
 
     public function comments(): MorphMany

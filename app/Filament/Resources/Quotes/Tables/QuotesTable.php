@@ -38,6 +38,7 @@ class QuotesTable
                 TextColumn::make('status')
                     ->label('Estado')
                     ->badge()
+                    ->formatStateUsing(fn (?string $state): string => FabStudioOptions::QUOTE_STATUSES[$state] ?? '-')
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('currency')
@@ -71,6 +72,11 @@ class QuotesTable
                     ->label('Aprobada el')
                     ->dateTime()
                     ->sortable(),
+                TextColumn::make('exported_at')
+                    ->label('Exportada el')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->label('Creada')
                     ->dateTime()

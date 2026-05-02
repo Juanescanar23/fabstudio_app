@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\QuoteVersions\Schemas;
 
+use App\Support\FabStudioOptions;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -13,16 +14,31 @@ class QuoteVersionInfolist
             ->components([
                 TextEntry::make('quote.title')
                     ->label('Cotización'),
+                TextEntry::make('template.name')
+                    ->label('Plantilla')
+                    ->placeholder('-'),
                 TextEntry::make('createdBy.name')
                     ->label('Creada por')
+                    ->placeholder('-'),
+                TextEntry::make('reviewedBy.name')
+                    ->label('Revisada por')
+                    ->placeholder('-'),
+                TextEntry::make('approvedBy.name')
+                    ->label('Aprobada por')
                     ->placeholder('-'),
                 TextEntry::make('version_number')
                     ->label('Número de versión')
                     ->numeric(),
                 TextEntry::make('status')
-                    ->label('Estado'),
+                    ->label('Estado')
+                    ->badge()
+                    ->formatStateUsing(fn (?string $state): string => FabStudioOptions::QUOTE_STATUSES[$state] ?? '-')
+                    ->color(fn (?string $state): string => FabStudioOptions::statusColor($state)),
                 TextEntry::make('content')
                     ->label('Contenido')
+                    ->formatStateUsing(fn ($state): string => is_array($state)
+                        ? json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+                        : (string) $state)
                     ->placeholder('-')
                     ->columnSpanFull(),
                 TextEntry::make('ai_model')
@@ -33,6 +49,9 @@ class QuoteVersionInfolist
                     ->placeholder('-'),
                 TextEntry::make('pdf_path')
                     ->label('PDF')
+                    ->placeholder('-'),
+                TextEntry::make('pdf_disk')
+                    ->label('Disco PDF')
                     ->placeholder('-'),
                 TextEntry::make('subtotal')
                     ->label('Subtotal')
@@ -52,6 +71,10 @@ class QuoteVersionInfolist
                     ->placeholder('-'),
                 TextEntry::make('approved_at')
                     ->label('Aprobada el')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('exported_at')
+                    ->label('Exportada el')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('created_at')

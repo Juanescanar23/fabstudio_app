@@ -13,6 +13,7 @@ use App\Models\ProjectComment;
 use App\Models\ProjectDocument;
 use App\Models\ProjectPhase;
 use App\Models\Quote;
+use App\Models\QuoteTemplate;
 use App\Models\QuoteVersion;
 use App\Models\SiteSetting;
 use App\Models\User;
@@ -58,6 +59,7 @@ class DemoDataSeeder extends Seeder
         }
 
         $this->seedPublicContent();
+        $this->seedQuoteTemplates($admin);
 
         $existingProject = Project::where('code', 'FAB-0001')->first();
 
@@ -162,6 +164,55 @@ class DemoDataSeeder extends Seeder
                 'visibility' => 'internal',
                 'body' => 'Render demo asociado al portal cliente.',
             ]);
+    }
+
+    private function seedQuoteTemplates(User $admin): void
+    {
+        QuoteTemplate::updateOrCreate(
+            ['name' => 'Propuesta inicial de diseño arquitectónico'],
+            [
+                'created_by_id' => $admin->id,
+                'type' => 'design',
+                'status' => 'active',
+                'currency' => 'COP',
+                'default_valid_days' => 30,
+                'description' => 'Plantilla base para propuestas iniciales de diseño FAB STUDIO.',
+                'sections' => [
+                    [
+                        'heading' => 'Alcance',
+                        'body' => 'Desarrollo de propuesta inicial para {{project_name}} ubicado en {{project_location}}. Incluye lineamientos espaciales, criterios de implantación y dirección conceptual.',
+                        'sort_order' => 1,
+                    ],
+                    [
+                        'heading' => 'Entregables',
+                        'body' => 'Documento de concepto, esquema arquitectónico base, moodboard de referencias y una ronda de ajustes posterior a revisión.',
+                        'sort_order' => 2,
+                    ],
+                    [
+                        'heading' => 'Proceso de revisión',
+                        'body' => 'Esta propuesta se genera como borrador asistido y debe ser revisada por el equipo antes de aprobarse o exportarse.',
+                        'sort_order' => 3,
+                    ],
+                ],
+                'line_items' => [
+                    [
+                        'name' => 'Diseño conceptual',
+                        'description' => 'Desarrollo de concepto arquitectónico inicial.',
+                        'quantity' => 1,
+                        'unit_price' => 18000000,
+                    ],
+                    [
+                        'name' => 'Documentación base',
+                        'description' => 'Preparación de entregables para revisión del cliente.',
+                        'quantity' => 1,
+                        'unit_price' => 8200000,
+                    ],
+                ],
+                'terms' => 'Valores expresados en COP. La propuesta conserva vigencia hasta la fecha indicada y no incluye costos de licencias, trámites o interventorías externas salvo acuerdo escrito.',
+                'ai_instructions' => 'Redactar con lenguaje claro, profesional y comercial. Mantener revisión humana obligatoria antes de aprobar.',
+                'metadata' => [],
+            ],
+        );
     }
 
     private function seedPublicContent(): void

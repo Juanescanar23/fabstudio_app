@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Quotes\Schemas;
 
 use App\Models\Quote;
+use App\Support\FabStudioOptions;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -25,7 +26,10 @@ class QuoteInfolist
                 TextEntry::make('title')
                     ->label('Título'),
                 TextEntry::make('status')
-                    ->label('Estado'),
+                    ->label('Estado')
+                    ->badge()
+                    ->formatStateUsing(fn (?string $state): string => FabStudioOptions::QUOTE_STATUSES[$state] ?? '-')
+                    ->color(fn (?string $state): string => FabStudioOptions::statusColor($state)),
                 TextEntry::make('currency')
                     ->label('Moneda'),
                 TextEntry::make('subtotal')
@@ -50,6 +54,10 @@ class QuoteInfolist
                     ->placeholder('-'),
                 TextEntry::make('approved_at')
                     ->label('Aprobada el')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('exported_at')
+                    ->label('Exportada el')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('notes')

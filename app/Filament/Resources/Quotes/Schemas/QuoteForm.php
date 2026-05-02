@@ -75,6 +75,8 @@ class QuoteForm
                     ->label('Enviada el'),
                 DateTimePicker::make('approved_at')
                     ->label('Aprobada el'),
+                DateTimePicker::make('exported_at')
+                    ->label('Exportada el'),
                 Textarea::make('notes')
                     ->label('Notas')
                     ->columnSpanFull(),

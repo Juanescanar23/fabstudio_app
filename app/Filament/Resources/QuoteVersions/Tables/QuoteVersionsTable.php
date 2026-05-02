@@ -20,9 +20,21 @@ class QuoteVersionsTable
                 TextColumn::make('quote.title')
                     ->label('Cotización')
                     ->searchable(),
+                TextColumn::make('template.name')
+                    ->label('Plantilla')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('createdBy.name')
                     ->label('Creada por')
                     ->searchable(),
+                TextColumn::make('reviewedBy.name')
+                    ->label('Revisada por')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('approvedBy.name')
+                    ->label('Aprobada por')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('version_number')
                     ->label('Número de versión')
                     ->numeric()
@@ -30,6 +42,7 @@ class QuoteVersionsTable
                 TextColumn::make('status')
                     ->label('Estado')
                     ->badge()
+                    ->formatStateUsing(fn (?string $state): string => FabStudioOptions::QUOTE_STATUSES[$state] ?? '-')
                     ->color(fn (?string $state): string => FabStudioOptions::statusColor($state))
                     ->searchable(),
                 TextColumn::make('ai_model')
@@ -63,6 +76,10 @@ class QuoteVersionsTable
                     ->sortable(),
                 TextColumn::make('approved_at')
                     ->label('Aprobada el')
+                    ->dateTime()
+                    ->sortable(),
+                TextColumn::make('exported_at')
+                    ->label('Exportada el')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')

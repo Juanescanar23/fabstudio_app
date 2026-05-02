@@ -78,3 +78,15 @@
 - Railway entrego `CNAME` dedicado y `TXT` de verificacion; ambos se aplicaron en Hostinger y se verificaron via DNS publico.
 - Se confirmo que `https://app.fabstudio.com.co/up` responde `HTTP 200` con SSL valido.
 - Se ajusto Laravel para confiar en proxies Railway y emitir URLs/cookies seguras sobre HTTPS.
+- Se inicio y completo el primer corte del Hito 6 para cotizaciones profesionales.
+- Se instalo Dompdf via `barryvdh/laravel-dompdf` para exportacion PDF desde Laravel.
+- Se agrego modelo `QuoteTemplate` con secciones, servicios, condiciones, instrucciones IA y metadatos.
+- Se extendieron `Quote` y `QuoteVersion` con campos de revision, aprobacion, exportacion, plantilla y PDF.
+- Se agrego servicio `QuoteWorkflowService` para generar versiones desde plantilla, marcar revision humana, aprobar y exportar PDF.
+- Se agrego asistente IA local deterministico `fabstudio-assistant-local-v1`, sin enviar datos a proveedores externos.
+- Se agrego notificacion transaccional por correo al cliente cuando una cotizacion aprobada se exporta a PDF.
+- Se agrego recurso Filament `Plantillas de cotizacion` y acciones en cotizaciones/versiones para operar el flujo completo.
+- Se agrego descarga protegida de PDF para usuarios `super_admin` y `admin`.
+- Se agrego plantilla demo de cotizacion al seeder.
+- Suite verificada tras Hito 6: 50 tests pasaron, 147 assertions.
+- Chequeo de estilo verificado con Pint: sin cambios pendientes.

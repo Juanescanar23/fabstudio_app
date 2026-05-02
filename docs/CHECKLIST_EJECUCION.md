@@ -76,22 +76,22 @@ Objetivo: conectar la vitrina publica con leads, CMS basico, multimedia y SEO.
 - [x] Auditoria real de zona DNS `fabstudio.com.co` via Hostinger API.
 - [x] Preparar configuracion Railway para app, worker, cron y variables de produccion.
 - [x] Crear registro DNS `app.fabstudio.com.co` en Hostinger hacia Railway.
-- [ ] Registrar `app.fabstudio.com.co` como custom domain en Railway y emitir SSL.
+- [x] Registrar `app.fabstudio.com.co` como custom domain en Railway y emitir SSL.
 
-Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. El subdominio privado previsto por la documentacion original es `app.fabstudio.com.co`; Hostinger ya tiene `CNAME` y `TXT` de verificacion, y Railway ya lista el custom domain.
+Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. El subdominio privado previsto por la documentacion original es `app.fabstudio.com.co`; Hostinger tiene `CNAME` y `TXT` de verificacion, Railway lista el custom domain y el healthcheck final responde por HTTPS.
 
 ## Hito 6 - Cotizaciones, IA y PDF
 
 Objetivo: generar propuestas profesionales con historial, revision humana y exportacion PDF.
 
-- [ ] Modelo de plantillas de cotizacion.
-- [ ] Flujo de estados: borrador, revisado, aprobado, exportado.
-- [ ] Servicio de asistencia IA con datos minimos.
-- [ ] Pantalla de revision humana obligatoria.
-- [ ] Generacion de PDF.
-- [ ] Historial y versionado.
-- [ ] Notificaciones transaccionales.
-- [ ] Prueba end-to-end de cotizacion.
+- [x] Modelo de plantillas de cotizacion.
+- [x] Flujo de estados: borrador, en revision, revisado, aprobado, exportado.
+- [x] Servicio de asistencia IA local con datos minimos y sin proveedor externo.
+- [x] Pantalla de revision humana obligatoria en versiones de cotizacion.
+- [x] Generacion de PDF.
+- [x] Historial y versionado.
+- [x] Notificaciones transaccionales por correo cuando se exporta PDF.
+- [x] Prueba end-to-end de cotizacion.
 
 ## Hito 7 - QA, Despliegue y Entrega
 
@@ -100,7 +100,7 @@ Objetivo: publicar una version estable y demostrable.
 - [ ] Pruebas funcionales principales.
 - [ ] Pruebas de permisos y aislamiento.
 - [ ] Pruebas de carga/descarga documental.
-- [ ] Pruebas de PDF e IA.
+- [x] Pruebas de PDF e IA.
 - [x] Configuracion Railway app.
 - [x] Configuracion Railway worker.
 - [x] Configuracion Railway cron.

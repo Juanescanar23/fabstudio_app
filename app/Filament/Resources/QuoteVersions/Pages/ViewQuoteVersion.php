@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\QuoteVersions\Pages;
 
+use App\Filament\Resources\QuoteVersions\Actions\QuoteVersionWorkflowActions;
 use App\Filament\Resources\QuoteVersions\QuoteVersionResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
@@ -13,6 +14,10 @@ class ViewQuoteVersion extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
+            QuoteVersionWorkflowActions::markReviewed(),
+            QuoteVersionWorkflowActions::approve(),
+            QuoteVersionWorkflowActions::exportPdf(),
+            QuoteVersionWorkflowActions::downloadPdf(),
             EditAction::make(),
         ];
     }
