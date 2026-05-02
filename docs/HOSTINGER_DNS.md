@@ -103,3 +103,17 @@ El template versionado esta en `infra/dns/fabstudio.com.co.template.json`. Debe 
 - `hostinger:dns:sync --apply` modifica DNS real y pide confirmacion en consola.
 - `--overwrite` puede reemplazar registros coincidentes. Usarlo solo con backup/export previo de la zona.
 - No aplicar registros definitivos hasta confirmar dominio publico, `app.fabstudio.com.co` y destino Railway.
+
+## Auditoria API 2026-05-02
+
+Consulta real ejecutada contra Hostinger API para `fabstudio.com.co`: exitosa.
+
+Zona actual observada:
+
+- `@` usa `ALIAS` hacia CDN de Hostinger.
+- `www` usa `CNAME` hacia CDN de Hostinger.
+- Correo activo en Hostinger mediante `MX`, `SPF`, `DMARC`, `autodiscover`, `autoconfig` y DKIM.
+- `ftp` apunta por `A` a IP de hosting.
+- `app` no existe todavia en la zona DNS.
+
+Estado operativo: no se aplico ningun cambio porque aun no existe destino publico de produccion para la aplicacion Laravel. El siguiente cambio esperado es crear `app.fabstudio.com.co` como `CNAME` hacia el dominio generado por Railway cuando el servicio este desplegado.
