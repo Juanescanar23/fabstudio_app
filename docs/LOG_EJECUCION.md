@@ -62,3 +62,8 @@
 - Se preparo configuracion Railway con servicios separados para app, worker y cron.
 - Se agrego plantilla de variables de produccion en `railway/variables.production.example`.
 - Se documento el flujo de despliegue y conexion DNS en `docs/RAILWAY_DEPLOYMENT.md`.
+- Se autentico Railway CLI y se vinculo el proyecto existente `FABstudio_App`.
+- Se crearon servicios Railway `MySQL` y `fabstudio-app`.
+- Se configuro `fabstudio-app` con variables de produccion y conexion interna a MySQL.
+- Se envio primer deploy a Railway; fallo porque Railpack eligio PHP 8.3 y faltaban extensiones `intl`/`zip`.
+- Se fijo Composer a PHP 8.4 y se declararon `ext-intl` y `ext-zip` para corregir el build Railway.

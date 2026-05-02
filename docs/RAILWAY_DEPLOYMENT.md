@@ -57,6 +57,8 @@ Variables clave:
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://app.fabstudio.com.co
+RAILPACK_PHP_EXTENSIONS=intl,zip
+RAILPACK_SKIP_MIGRATIONS=true
 DB_CONNECTION=mysql
 DB_URL=${{MySQL.MYSQL_URL}}
 QUEUE_CONNECTION=database
