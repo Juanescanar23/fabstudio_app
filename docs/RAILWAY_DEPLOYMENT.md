@@ -29,11 +29,12 @@ git@github.com:Juanescanar23/fabstudio_app.git
 
 El repo incluye archivos separados para evitar mezclar procesos:
 
+- `railway.json`: configuracion principal usada por Railway CLI para el servicio web.
 - `railway/app.json`: servicio web, build frontend, migraciones y seed base antes del deploy.
 - `railway/worker.json`: worker con `php artisan queue:work database`.
 - `railway/cron.json`: scheduler con `php artisan schedule:work`.
 
-En Railway, cada servicio debe apuntar al archivo correspondiente en la opcion de config file path.
+En Railway, el servicio web puede usar `railway.json` directamente. Si se crean worker y cron desde el mismo repositorio via dashboard, cada servicio debe apuntar al archivo correspondiente en la opcion de config file path.
 
 ## Variables de entorno
 
