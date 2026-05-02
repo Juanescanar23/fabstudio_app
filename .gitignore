@@ -42,3 +42,4 @@ pnpm-debug.log*
 
 # Railway / local infra
 .railway/
+infra/dns/*.production.json

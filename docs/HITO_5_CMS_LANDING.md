@@ -56,10 +56,19 @@ Esto mantiene el embudo comercial en el recurso existente de `Prospectos`.
 
 ## Dominio y subdominio
 
+Base de administracion DNS implementada:
+
+- Integracion con Hostinger API por variables de entorno.
+- Comando `hostinger:dns:list` para auditar registros actuales.
+- Comando `hostinger:dns:validate` para validar zona antes de aplicar.
+- Comando `hostinger:dns:sync` con modo seco por defecto y `--apply` para cambios reales.
+- Template versionado en `infra/dns/fabstudio.com.co.template.json`.
+- Runbook operativo en `docs/HOSTINGER_DNS.md`.
+
 Pendiente de infraestructura externa:
 
 - Dominio principal: sitio publico.
 - Subdominio privado: panel/portal.
-- Configuracion Railway: app, variables, certificados y DNS.
+- Configuracion Railway: app, variables, certificados y destinos DNS finales.
 
-La aplicacion ya separa rutas publicas, panel y portal. La conexion real se ejecuta en Hito 7 junto con despliegue.
+La aplicacion ya separa rutas publicas, panel y portal. La conexion real se ejecuta cuando Railway entregue los destinos definitivos y se aplique DNS en Hostinger.

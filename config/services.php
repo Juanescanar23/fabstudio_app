@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'hostinger' => [
+        'token' => env('HOSTINGER_API_TOKEN'),
+        'domain' => env('HOSTINGER_DOMAIN', 'fabstudio.com.co'),
+        'base_url' => env('HOSTINGER_API_BASE_URL', 'https://developers.hostinger.com/api'),
+    ],
+
 ];

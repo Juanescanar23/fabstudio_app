@@ -72,9 +72,10 @@ Objetivo: conectar la vitrina publica con leads, CMS basico, multimedia y SEO.
 - [x] Biblioteca multimedia.
 - [x] Proyectos publicos destacados.
 - [x] Metadatos SEO administrables.
-- [ ] Conexion de dominio principal y subdominio privado.
+- [x] Integracion segura con API Hostinger para listar, validar y sincronizar DNS.
+- [ ] Conexion de dominio principal y subdominio privado con destinos definitivos de produccion.
 
-Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. La conexion real de dominio/subdominio queda pendiente de Railway/DNS.
+Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. La conexion real de dominio/subdominio queda pendiente de confirmar destinos Railway y aplicar DNS en Hostinger.
 
 ## Hito 6 - Cotizaciones, IA y PDF
 

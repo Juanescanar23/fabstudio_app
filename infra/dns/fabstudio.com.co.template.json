@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "domain": "fabstudio.com.co",
+    "warning": "Template de referencia. Reemplazar todos los valores REPLACE_* antes de validar o aplicar."
+  },
+  "zone": [
+    {
+      "name": "@",
+      "type": "A",
+      "ttl": 3600,
+      "records": [
+        {
+          "content": "REPLACE_WITH_PRODUCTION_IPV4"
+        }
+      ]
+    },
+    {
+      "name": "www",
+      "type": "CNAME",
+      "ttl": 3600,
+      "records": [
+        {
+          "content": "fabstudio.com.co"
+        }
+      ]
+    },
+    {
+      "name": "portal",
+      "type": "CNAME",
+      "ttl": 3600,
+      "records": [
+        {
+          "content": "REPLACE_WITH_PRIVATE_APP_HOST"
+        }
+      ]
+    }
+  ]
+}

@@ -50,3 +50,8 @@
 - Se agregaron datos demo de CMS, multimedia, SEO y proyecto publico.
 - Se agregaron pruebas funcionales para landing, formulario y visibilidad de proyectos publicos.
 - Suite verificada tras Hito 5 parcial: 43 tests pasaron, 110 assertions.
+- Se reviso la documentacion oficial de Hostinger API para administracion DNS de `fabstudio.com.co`.
+- Se agrego configuracion segura `HOSTINGER_API_TOKEN`, `HOSTINGER_DOMAIN` y `HOSTINGER_API_BASE_URL` sin versionar secretos.
+- Se implemento cliente interno `HostingerDnsClient` para listar, validar y actualizar registros DNS.
+- Se agregaron comandos Artisan `hostinger:dns:list`, `hostinger:dns:validate` y `hostinger:dns:sync` con modo seco por defecto.
+- Se documento la operacion DNS en `docs/HOSTINGER_DNS.md` y se agrego template de zona en `infra/dns/fabstudio.com.co.template.json`.
