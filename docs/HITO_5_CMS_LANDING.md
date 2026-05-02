@@ -68,7 +68,7 @@ Base de administracion DNS implementada:
 Pendiente de infraestructura externa:
 
 - Dominio principal: sitio publico.
-- Subdominio privado: panel/portal.
+- Subdominio privado: `app.fabstudio.com.co` para panel/portal.
 - Configuracion Railway: app, variables, certificados y destinos DNS finales.
 
 La aplicacion ya separa rutas publicas, panel y portal. La conexion real se ejecuta cuando Railway entregue los destinos definitivos y se aplique DNS en Hostinger.

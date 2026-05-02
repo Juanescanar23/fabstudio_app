@@ -25,7 +25,7 @@
       ]
     },
     {
-      "name": "portal",
+      "name": "app",
       "type": "CNAME",
       "ttl": 3600,
       "records": [

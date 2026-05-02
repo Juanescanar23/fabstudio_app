@@ -6,6 +6,8 @@ Fecha: 2026-05-02
 
 Administrar la zona DNS de `fabstudio.com.co` desde comandos internos de Laravel, usando la API oficial de Hostinger con credenciales fuera del repositorio.
 
+Subdominio privado previsto: `app.fabstudio.com.co`.
+
 ## Fuentes revisadas
 
 - Documentacion oficial: https://developers.hostinger.com
@@ -100,4 +102,4 @@ El template versionado esta en `infra/dns/fabstudio.com.co.template.json`. Debe 
 - `hostinger:dns:sync` sin `--apply` es modo seco.
 - `hostinger:dns:sync --apply` modifica DNS real y pide confirmacion en consola.
 - `--overwrite` puede reemplazar registros coincidentes. Usarlo solo con backup/export previo de la zona.
-- No aplicar registros definitivos hasta confirmar dominio publico, subdominio privado y destino Railway.
+- No aplicar registros definitivos hasta confirmar dominio publico, `app.fabstudio.com.co` y destino Railway.

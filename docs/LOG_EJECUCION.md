@@ -55,3 +55,4 @@
 - Se implemento cliente interno `HostingerDnsClient` para listar, validar y actualizar registros DNS.
 - Se agregaron comandos Artisan `hostinger:dns:list`, `hostinger:dns:validate` y `hostinger:dns:sync` con modo seco por defecto.
 - Se documento la operacion DNS en `docs/HOSTINGER_DNS.md` y se agrego template de zona en `infra/dns/fabstudio.com.co.template.json`.
+- Se confirmo en la documentacion original que la aplicacion privada se aloja en `app.fabstudio.com.co`.
