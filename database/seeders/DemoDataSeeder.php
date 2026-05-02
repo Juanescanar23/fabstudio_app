@@ -15,6 +15,8 @@ use App\Models\QuoteVersion;
 use App\Models\User;
 use App\Models\VisualAsset;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class DemoDataSeeder extends Seeder
 {
@@ -23,19 +25,38 @@ class DemoDataSeeder extends Seeder
      */
     public function run(): void
     {
-        if (Client::where('email', 'cliente.demo@fabstudio.local')->exists()) {
-            return;
-        }
-
         $admin = User::where('email', env('ADMIN_EMAIL', 'admin@fabstudio.local'))->firstOrFail();
 
-        $client = Client::factory()->create([
-            'name' => 'Cliente Demo FAB STUDIO',
-            'email' => 'cliente.demo@fabstudio.local',
-            'phone' => '+57 300 000 0000',
-            'city' => 'Popayan',
-            'notes' => 'Cliente de demostracion para validar el flujo MVP.',
-        ]);
+        $client = Client::firstOrCreate(
+            ['email' => 'cliente.demo@fabstudio.local'],
+            [
+                'name' => 'Cliente Demo FAB STUDIO',
+                'phone' => '+57 300 000 0000',
+                'city' => 'Popayan',
+                'notes' => 'Cliente de demostracion para validar el flujo MVP.',
+            ],
+        );
+
+        $clientRole = Role::firstOrCreate(['name' => 'client']);
+
+        $clientUser = User::updateOrCreate(
+            ['email' => 'cliente.demo@fabstudio.local'],
+            [
+                'client_id' => $client->id,
+                'name' => 'Cliente Demo FAB STUDIO',
+                'password' => Hash::make('password'),
+            ],
+        );
+
+        $clientUser->forceFill(['email_verified_at' => now()])->save();
+
+        if (! $clientUser->hasRole($clientRole)) {
+            $clientUser->assignRole($clientRole);
+        }
+
+        if (Project::where('code', 'FAB-0001')->exists()) {
+            return;
+        }
 
         $lead = Lead::factory()
             ->converted($client)
@@ -81,7 +102,7 @@ class DemoDataSeeder extends Seeder
             ->create([
                 'uploaded_by_id' => $admin->id,
                 'title' => 'Plano conceptual inicial',
-                'category' => 'planos',
+                'category' => 'design',
                 'visibility' => 'client',
                 'status' => 'published',
             ]);
@@ -112,7 +133,7 @@ class DemoDataSeeder extends Seeder
                 'created_by_id' => $admin->id,
                 'quote_number' => 'COT-0001',
                 'title' => 'Propuesta inicial de diseno',
-                'status' => 'reviewed',
+                'status' => 'review',
             ]);
 
         QuoteVersion::factory()
@@ -120,7 +141,7 @@ class DemoDataSeeder extends Seeder
             ->create([
                 'created_by_id' => $admin->id,
                 'version_number' => 1,
-                'status' => 'reviewed',
+                'status' => 'review',
             ]);
 
         ProjectComment::factory()
@@ -128,7 +149,7 @@ class DemoDataSeeder extends Seeder
             ->for($admin, 'user')
             ->for($asset, 'commentable')
             ->create([
-                'type' => 'internal_note',
+                'type' => 'comment',
                 'visibility' => 'internal',
                 'body' => 'Render demo asociado al portal cliente.',
             ]);

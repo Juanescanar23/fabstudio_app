@@ -31,3 +31,10 @@
 - Se agrego widget `OperationalStats` al dashboard administrativo.
 - Se agregaron pruebas de acceso al panel Filament por rol: `super_admin` permitido y `client` bloqueado.
 - Suite verificada tras Hito 3: 35 tests pasaron, 79 assertions.
+- Se agrego `client_id` a usuarios para vincular cuentas cliente con su organizacion.
+- Se creo el portal cliente en `/portal` con dashboard, timeline de proyecto, boveda documental, galeria visual y rutas privadas de descarga/visualizacion.
+- Se agregaron comentarios y decisiones de aprobacion por documento o asset visual.
+- Se instalo `@google/model-viewer` y se cargo bajo demanda para modelos 3D compatibles.
+- Se actualizo `DemoDataSeeder` para crear usuario cliente demo con rol `client`.
+- Se agregaron pruebas de aislamiento Cliente A / Cliente B, visibilidad de entregables y descarga privada.
+- Suite verificada tras Hito 4: 40 tests pasaron, 96 assertions.

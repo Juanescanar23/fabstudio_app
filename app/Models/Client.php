@@ -37,4 +37,9 @@ class Client extends Model
     {
         return $this->hasMany(Quote::class);
     }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

@@ -53,14 +53,14 @@ Objetivo: panel administrativo usable para leads, clientes, proyectos, hitos, do
 
 Objetivo: portal privado para seguimiento, documentos, renders y aprobaciones.
 
-- [ ] Rutas y layout del portal cliente.
-- [ ] Dashboard cliente.
-- [ ] Timeline de proyecto.
-- [ ] Boveda documental privada.
-- [ ] Galeria privada de renders, imagenes y videos.
-- [ ] Visor base para modelos compatibles.
-- [ ] Comentarios y aprobaciones por entregable.
-- [ ] Validar aislamiento Cliente A / Cliente B.
+- [x] Rutas y layout del portal cliente.
+- [x] Dashboard cliente.
+- [x] Timeline de proyecto.
+- [x] Boveda documental privada.
+- [x] Galeria privada de renders, imagenes y videos.
+- [x] Visor base para modelos compatibles.
+- [x] Comentarios y aprobaciones por entregable.
+- [x] Validar aislamiento Cliente A / Cliente B.
 
 ## Hito 5 - Landing-App, CMS y Marca
 
