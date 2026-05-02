@@ -22,3 +22,4 @@
 - Suite base verificada: 33 tests pasaron, 77 assertions.
 - Se agregaron factories de las entidades core y `DemoDataSeeder` para validar datos reales de panel/portal.
 - Queda pendiente provisionar MySQL/Redis real. Docker, MySQL y Homebrew no estaban instalados en el equipo auditado.
+- Se creo el primer commit de cimentacion: `8dad6b7 chore: cimentar proyecto Laravel FAB STUDIO`.

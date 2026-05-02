@@ -14,7 +14,7 @@ Objetivo: convertir la documentacion en un proyecto ejecutable, trazable y listo
 - [x] Crear estructura base de aplicacion Laravel.
 - [x] Configurar README operativo inicial.
 - [x] Definir archivo `.env.example` sin secretos.
-- [ ] Crear primer commit de cimentacion.
+- [x] Crear primer commit de cimentacion.
 
 ## Hito 2 - Cimentacion Tecnica
 
