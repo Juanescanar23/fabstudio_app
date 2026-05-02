@@ -1,0 +1,44 @@
+# Local OS/editor files
+.DS_Store
+.claude/
+
+# Local contractual/reference documents
+/DOCUMENTACION/
+
+# Laravel / PHP
+/vendor/
+.env
+.env.*
+!.env.example
+/storage/*.key
+/storage/framework/cache/data/
+/storage/framework/sessions/
+/storage/framework/testing/
+/storage/framework/views/
+/storage/logs/
+/database/*.sqlite
+/bootstrap/cache/*.php
+
+# Frontend
+/node_modules/
+/public/build/
+/public/hot
+/public/fonts-manifest.dev.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing / coverage
+/coverage/
+/.phpunit.cache/
+
+# IDE
+/.idea/
+/.vscode/
+/.fleet/
+/.nova/
+/.zed/
+
+# Railway / local infra
+.railway/
