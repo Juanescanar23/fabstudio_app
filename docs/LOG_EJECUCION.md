@@ -23,3 +23,11 @@
 - Se agregaron factories de las entidades core y `DemoDataSeeder` para validar datos reales de panel/portal.
 - Queda pendiente provisionar MySQL/Redis real. Docker, MySQL y Homebrew no estaban instalados en el equipo auditado.
 - Se creo el primer commit de cimentacion: `8dad6b7 chore: cimentar proyecto Laravel FAB STUDIO`.
+- Se generaron recursos Filament para leads, clientes, proyectos, fases, hitos, documentos, versiones, assets visuales, cotizaciones y comentarios.
+- Se organizaron los recursos por grupos de navegacion: `Operacion`, `Documentos` y `Cotizaciones`.
+- Se agregaron opciones controladas para estados, tipos, visibilidad, moneda, categorias y decisiones.
+- Se agregaron filtros operativos por cliente, proyecto, estado, fase, categoria, visibilidad y vigencia.
+- Se reemplazaron campos de ruta manual por carga privada de archivos en documentos, assets visuales y PDFs de cotizacion.
+- Se agrego widget `OperationalStats` al dashboard administrativo.
+- Se agregaron pruebas de acceso al panel Filament por rol: `super_admin` permitido y `client` bloqueado.
+- Suite verificada tras Hito 3: 35 tests pasaron, 79 assertions.

@@ -4,9 +4,9 @@ Sistema privado a la medida para FAB STUDIO: gestion de leads, clientes, proyect
 
 ## Estado
 
-Proyecto en cimentacion. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
+Hitos 1, 2 y 3 ejecutados sobre base Laravel + Livewire + Filament. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
 
-La base Laravel + Livewire ya fue creada en la raiz del repositorio.
+El panel administrativo esta disponible en `/admin` con recursos iniciales para leads, clientes, proyectos, fases, hitos, documentos, assets visuales, cotizaciones y comentarios.
 
 ## Roadmap Operativo
 
@@ -57,6 +57,11 @@ Para poblar datos de demostracion:
 ```bash
 php artisan db:seed --class=DemoDataSeeder
 ```
+
+Credenciales admin locales por defecto:
+
+- Email: `admin@fabstudio.local`
+- Password: `password`
 
 ## Documentos de Trabajo
 

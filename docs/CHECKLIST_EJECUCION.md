@@ -30,24 +30,24 @@ Objetivo: establecer autenticacion, permisos, datos base y panel inicial.
 - [x] Instalar sistema de roles/permisos.
 - [x] Instalar auditoria base.
 - [x] Validar migraciones base y seeders en base local SQLite.
-- [ ] Crear modelos principales: Client, Project, ProjectPhase, Milestone.
-- [ ] Crear modelos documentales: Document, DocumentVersion, VisualAsset.
-- [ ] Crear modelos comerciales: Lead, Quote, QuoteVersion.
+- [x] Crear modelos principales: Client, Project, ProjectPhase, Milestone.
+- [x] Crear modelos documentales: ProjectDocument, DocumentVersion, VisualAsset.
+- [x] Crear modelos comerciales: Lead, Quote, QuoteVersion.
 - [x] Crear factories y seeders de demo.
 
 ## Hito 3 - Operacion Interna
 
 Objetivo: panel administrativo usable para leads, clientes, proyectos, hitos, documentos y auditoria.
 
-- [ ] Recurso Filament para Leads.
-- [ ] Recurso Filament para Clientes.
-- [ ] Recurso Filament para Proyectos.
-- [ ] Recurso Filament para Fases e Hitos.
-- [ ] Recurso Filament para Documentos y versiones.
-- [ ] Recurso Filament para Comentarios/Aprobaciones.
-- [ ] Dashboard operativo inicial.
-- [ ] Filtros y busqueda por cliente, proyecto, estado y fase.
-- [ ] Pruebas de autorizacion internas.
+- [x] Recurso Filament para Leads.
+- [x] Recurso Filament para Clientes.
+- [x] Recurso Filament para Proyectos.
+- [x] Recurso Filament para Fases e Hitos.
+- [x] Recurso Filament para Documentos y versiones.
+- [x] Recurso Filament para Comentarios/Aprobaciones.
+- [x] Dashboard operativo inicial.
+- [x] Filtros y busqueda por cliente, proyecto, estado y fase.
+- [x] Pruebas de autorizacion internas.
 
 ## Hito 4 - Portal Cliente y Comunicacion Visual
 
