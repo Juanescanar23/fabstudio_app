@@ -102,7 +102,7 @@ El template versionado esta en `infra/dns/fabstudio.com.co.template.json`. Debe 
 - `hostinger:dns:sync` sin `--apply` es modo seco.
 - `hostinger:dns:sync --apply` modifica DNS real y pide confirmacion en consola.
 - `--overwrite` puede reemplazar registros coincidentes. Usarlo solo con backup/export previo de la zona.
-- No aplicar registros definitivos hasta confirmar dominio publico, `app.fabstudio.com.co` y destino Railway.
+- No aplicar `--overwrite` sobre la zona completa salvo que exista backup/export previo y aprobacion explicita.
 
 ## Auditoria API 2026-05-02
 
@@ -114,6 +114,21 @@ Zona actual observada:
 - `www` usa `CNAME` hacia CDN de Hostinger.
 - Correo activo en Hostinger mediante `MX`, `SPF`, `DMARC`, `autodiscover`, `autoconfig` y DKIM.
 - `ftp` apunta por `A` a IP de hosting.
-- `app` no existe todavia en la zona DNS.
+- `app` no existia todavia en la zona DNS.
 
-Estado operativo: no se aplico ningun cambio porque aun no existe destino publico de produccion para la aplicacion Laravel. El siguiente cambio esperado es crear `app.fabstudio.com.co` como `CNAME` hacia el dominio generado por Railway cuando el servicio este desplegado.
+## Cambio aplicado 2026-05-02
+
+Se agrego el archivo operativo `infra/dns/fabstudio.com.co.app-railway-cname.json` y se aplico contra Hostinger API sin `--overwrite`.
+
+Registro agregado:
+
+```text
+app CNAME fabstudio-app-production.up.railway.app.
+```
+
+Verificacion:
+
+- Hostinger API lista `app` como `CNAME` activo.
+- DNS publico resuelve `app.fabstudio.com.co` hacia `fabstudio-app-production.up.railway.app.`
+
+Pendiente: registrar `app.fabstudio.com.co` como custom domain dentro de Railway. Hasta que Railway lo reconozca, el DNS ya apunta correctamente pero Railway responde como fallback y no emite SSL valido para ese host.

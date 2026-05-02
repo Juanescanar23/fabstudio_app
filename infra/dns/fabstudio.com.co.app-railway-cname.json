@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "domain": "fabstudio.com.co",
+    "purpose": "Crear el registro DNS app.fabstudio.com.co hacia el dominio Railway activo. Falta agregar el TXT exacto que Railway entregue al crear el dominio personalizado."
+  },
+  "zone": [
+    {
+      "name": "app",
+      "type": "CNAME",
+      "ttl": 300,
+      "records": [
+        {
+          "content": "fabstudio-app-production.up.railway.app."
+        }
+      ]
+    }
+  ]
+}

@@ -87,10 +87,10 @@ No modificar estos registros actuales sin validacion adicional:
 - `www` CNAME hacia CDN de Hostinger.
 - `MX`, `TXT`, DKIM, DMARC, `autodiscover` y `autoconfig` de correo Hostinger.
 
-Cambio esperado cuando Railway entregue target:
+Cambio aplicado para el subdominio privado:
 
 ```text
-app CNAME <target-de-railway>
+app CNAME fabstudio-app-production.up.railway.app.
 ```
 
 Railway puede solicitar un registro TXT de verificacion. Si lo entrega, tambien debe agregarse en Hostinger.
@@ -98,7 +98,10 @@ Railway puede solicitar un registro TXT de verificacion. Si lo entrega, tambien 
 ## Estado actual
 
 - GitHub listo y sincronizado.
-- Hostinger API validado en modo lectura.
-- `app.fabstudio.com.co` aun no existe en DNS.
-- Railway CLI no estaba instalado en el equipo al momento de esta preparacion.
-- Falta autenticacion Railway por API token o CLI login para crear/vincular servicios desde terminal.
+- Hostinger API validado en lectura, validacion y sincronizacion.
+- `app.fabstudio.com.co` existe en DNS como `CNAME` hacia `fabstudio-app-production.up.railway.app.`.
+- Railway CLI instalado y autenticado.
+- Proyecto Railway `FABstudio_App` vinculado a `production`.
+- Servicio `fabstudio-app` desplegado con estado `SUCCESS`.
+- Healthcheck temporal validado en `https://fabstudio-app-production.up.railway.app/up`.
+- Bloqueo restante: `railway domain app.fabstudio.com.co --service fabstudio-app` devuelve `Unauthorized`. Hasta que Railway registre el custom domain, el host `app.fabstudio.com.co` responde como fallback y SSL no es valido para ese dominio.

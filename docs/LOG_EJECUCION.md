@@ -68,3 +68,9 @@
 - Se envio primer deploy a Railway; fallo porque Railpack eligio PHP 8.3 y faltaban extensiones `intl`/`zip`.
 - Se fijo Composer a PHP 8.4 y se declararon `ext-intl` y `ext-zip` para corregir el build Railway.
 - Se corrigio estructura versionada de `storage/` para que Railway tenga rutas validas de cache, sesiones, vistas y logs en Laravel.
+- Se corrigio `railway/init-app.sh` para ejecutar predeploy con Bash y evitar fallo por `pipefail` en `sh`.
+- Se completo deploy exitoso de `fabstudio-app` en Railway con estado `SUCCESS`.
+- Se valido healthcheck Railway en `https://fabstudio-app-production.up.railway.app/up` con `HTTP 200`.
+- Se creo y aplico en Hostinger el registro `app CNAME fabstudio-app-production.up.railway.app.` sin sobrescribir registros existentes.
+- Se confirmo propagacion DNS publica de `app.fabstudio.com.co` hacia Railway.
+- Bloqueo actual: Railway CLI devuelve `Unauthorized` al crear `app.fabstudio.com.co` como custom domain; Railway Agent no persiste el dominio en `customDomains`. Mientras Railway no registre el dominio, `https://app.fabstudio.com.co` responde `404` fallback y no tiene certificado valido para ese host.
