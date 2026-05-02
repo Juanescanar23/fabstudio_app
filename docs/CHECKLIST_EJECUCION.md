@@ -78,7 +78,7 @@ Objetivo: conectar la vitrina publica con leads, CMS basico, multimedia y SEO.
 - [x] Crear registro DNS `app.fabstudio.com.co` en Hostinger hacia Railway.
 - [ ] Registrar `app.fabstudio.com.co` como custom domain en Railway y emitir SSL.
 
-Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. El subdominio privado previsto por la documentacion original es `app.fabstudio.com.co`; Hostinger ya tiene el `CNAME` hacia Railway, pero Railway debe registrar el custom domain para que deje de responder como fallback y emita certificado SSL.
+Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. El subdominio privado previsto por la documentacion original es `app.fabstudio.com.co`; Hostinger ya tiene `CNAME` y `TXT` de verificacion, y Railway ya lista el custom domain.
 
 ## Hito 6 - Cotizaciones, IA y PDF
 
@@ -106,7 +106,7 @@ Objetivo: publicar una version estable y demostrable.
 - [x] Configuracion Railway cron.
 - [x] Variables de entorno documentadas.
 - [x] Deploy app Railway exitoso en dominio temporal.
-- [ ] Dominio custom Railway `app.fabstudio.com.co`.
+- [x] Dominio custom Railway `app.fabstudio.com.co`.
 - [ ] Manual operativo breve.
 - [ ] Capacitacion y cierre.
 

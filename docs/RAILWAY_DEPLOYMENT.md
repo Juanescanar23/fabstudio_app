@@ -90,7 +90,8 @@ No modificar estos registros actuales sin validacion adicional:
 Cambio aplicado para el subdominio privado:
 
 ```text
-app CNAME fabstudio-app-production.up.railway.app.
+app CNAME eroh8bc4.up.railway.app.
+_railway-verify.app TXT railway-verify=<token-de-verificacion-railway>
 ```
 
 Railway puede solicitar un registro TXT de verificacion. Si lo entrega, tambien debe agregarse en Hostinger.
@@ -99,9 +100,11 @@ Railway puede solicitar un registro TXT de verificacion. Si lo entrega, tambien 
 
 - GitHub listo y sincronizado.
 - Hostinger API validado en lectura, validacion y sincronizacion.
-- `app.fabstudio.com.co` existe en DNS como `CNAME` hacia `fabstudio-app-production.up.railway.app.`.
+- `app.fabstudio.com.co` existe en DNS como `CNAME` hacia el target dedicado entregado por Railway.
+- `_railway-verify.app.fabstudio.com.co` existe como `TXT` de verificacion Railway.
 - Railway CLI instalado y autenticado.
 - Proyecto Railway `FABstudio_App` vinculado a `production`.
 - Servicio `fabstudio-app` desplegado con estado `SUCCESS`.
 - Healthcheck temporal validado en `https://fabstudio-app-production.up.railway.app/up`.
-- Bloqueo restante: `railway domain app.fabstudio.com.co --service fabstudio-app` devuelve `Unauthorized`. Hasta que Railway registre el custom domain, el host `app.fabstudio.com.co` responde como fallback y SSL no es valido para ese dominio.
+- Dominio custom `https://app.fabstudio.com.co` creado en Railway y listado para `fabstudio-app`.
+- Healthcheck final validado en `https://app.fabstudio.com.co/up` con `HTTP 200` y SSL valido.

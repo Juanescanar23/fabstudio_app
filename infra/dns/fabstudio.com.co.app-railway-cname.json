@@ -1,7 +1,8 @@
 {
   "_meta": {
     "domain": "fabstudio.com.co",
-    "purpose": "Crear el registro DNS app.fabstudio.com.co hacia el dominio Railway activo. Falta agregar el TXT exacto que Railway entregue al crear el dominio personalizado."
+    "purpose": "Crear y verificar app.fabstudio.com.co como custom domain Railway para fabstudio-app.",
+    "railway_custom_domain_id": "ada55a2c-4ca1-4d6e-b489-181b46e6e9ed"
   },
   "zone": [
     {
@@ -10,7 +11,17 @@
       "ttl": 300,
       "records": [
         {
-          "content": "fabstudio-app-production.up.railway.app."
+          "content": "eroh8bc4.up.railway.app."
+        }
+      ]
+    },
+    {
+      "name": "_railway-verify.app",
+      "type": "TXT",
+      "ttl": 300,
+      "records": [
+        {
+          "content": "railway-verify=f5eb4c259aae315b9bf3978503fe24ee2fae55ce50a2f5874abaf51549c63b23"
         }
       ]
     }

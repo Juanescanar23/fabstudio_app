@@ -118,17 +118,20 @@ Zona actual observada:
 
 ## Cambio aplicado 2026-05-02
 
-Se agrego el archivo operativo `infra/dns/fabstudio.com.co.app-railway-cname.json` y se aplico contra Hostinger API sin `--overwrite`.
+Se agrego el archivo operativo `infra/dns/fabstudio.com.co.app-railway-cname.json` y se aplico contra Hostinger API.
 
-Registro agregado:
+Registros aplicados:
 
 ```text
-app CNAME fabstudio-app-production.up.railway.app.
+app CNAME eroh8bc4.up.railway.app.
+_railway-verify.app TXT railway-verify=<token-de-verificacion-railway>
 ```
 
 Verificacion:
 
 - Hostinger API lista `app` como `CNAME` activo.
-- DNS publico resuelve `app.fabstudio.com.co` hacia `fabstudio-app-production.up.railway.app.`
+- Hostinger API lista `_railway-verify.app` como `TXT` activo.
+- DNS publico resuelve `app.fabstudio.com.co` hacia el target dedicado de Railway.
+- DNS publico resuelve el `TXT` de verificacion Railway.
 
-Pendiente: registrar `app.fabstudio.com.co` como custom domain dentro de Railway. Hasta que Railway lo reconozca, el DNS ya apunta correctamente pero Railway responde como fallback y no emite SSL valido para ese host.
+Estado final: Railway ya reconoce `app.fabstudio.com.co` como custom domain y el healthcheck `https://app.fabstudio.com.co/up` responde `HTTP 200` con SSL valido.

@@ -74,3 +74,7 @@
 - Se creo y aplico en Hostinger el registro `app CNAME fabstudio-app-production.up.railway.app.` sin sobrescribir registros existentes.
 - Se confirmo propagacion DNS publica de `app.fabstudio.com.co` hacia Railway.
 - Bloqueo actual: Railway CLI devuelve `Unauthorized` al crear `app.fabstudio.com.co` como custom domain; Railway Agent no persiste el dominio en `customDomains`. Mientras Railway no registre el dominio, `https://app.fabstudio.com.co` responde `404` fallback y no tiene certificado valido para ese host.
+- Se genero token Railway con scope de proyectos y se creo el custom domain `app.fabstudio.com.co` en Railway.
+- Railway entrego `CNAME` dedicado y `TXT` de verificacion; ambos se aplicaron en Hostinger y se verificaron via DNS publico.
+- Se confirmo que `https://app.fabstudio.com.co/up` responde `HTTP 200` con SSL valido.
+- Se ajusto Laravel para confiar en proxies Railway y emitir URLs/cookies seguras sobre HTTPS.
