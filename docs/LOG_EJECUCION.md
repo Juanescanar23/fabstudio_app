@@ -67,3 +67,4 @@
 - Se configuro `fabstudio-app` con variables de produccion y conexion interna a MySQL.
 - Se envio primer deploy a Railway; fallo porque Railpack eligio PHP 8.3 y faltaban extensiones `intl`/`zip`.
 - Se fijo Composer a PHP 8.4 y se declararon `ext-intl` y `ext-zip` para corregir el build Railway.
+- Se corrigio estructura versionada de `storage/` para que Railway tenga rutas validas de cache, sesiones, vistas y logs en Laravel.
