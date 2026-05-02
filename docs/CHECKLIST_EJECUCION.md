@@ -67,12 +67,14 @@ Objetivo: portal privado para seguimiento, documentos, renders y aprobaciones.
 
 Objetivo: conectar la vitrina publica con leads, CMS basico, multimedia y SEO.
 
-- [ ] Formulario de contacto conectado a Leads.
-- [ ] CMS basico para contenido editable.
-- [ ] Biblioteca multimedia.
-- [ ] Proyectos publicos destacados.
-- [ ] Metadatos SEO administrables.
+- [x] Formulario de contacto conectado a Leads.
+- [x] CMS basico para contenido editable.
+- [x] Biblioteca multimedia.
+- [x] Proyectos publicos destacados.
+- [x] Metadatos SEO administrables.
 - [ ] Conexion de dominio principal y subdominio privado.
+
+Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. La conexion real de dominio/subdominio queda pendiente de Railway/DNS.
 
 ## Hito 6 - Cotizaciones, IA y PDF
 

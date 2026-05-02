@@ -4,9 +4,11 @@ namespace App\Filament\Resources\Projects\Schemas;
 
 use App\Support\FabStudioOptions;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Schema;
 
 class ProjectForm
@@ -52,6 +54,27 @@ class ProjectForm
                     ->label('Fecha de inicio'),
                 DatePicker::make('ends_at')
                     ->label('Fecha de cierre'),
+                Toggle::make('is_public')
+                    ->label('Publicado en sitio público')
+                    ->default(false),
+                Toggle::make('is_featured')
+                    ->label('Destacado')
+                    ->default(false),
+                TextInput::make('public_slug')
+                    ->label('Slug público')
+                    ->unique(ignoreRecord: true),
+                TextInput::make('public_cover_path')
+                    ->label('Portada pública (URL o ruta)'),
+                Textarea::make('public_summary')
+                    ->label('Resumen público')
+                    ->columnSpanFull(),
+                DateTimePicker::make('public_published_at')
+                    ->label('Publicado el'),
+                TextInput::make('seo_title')
+                    ->label('Título SEO'),
+                Textarea::make('seo_description')
+                    ->label('Descripción SEO')
+                    ->columnSpanFull(),
             ]);
     }
 }

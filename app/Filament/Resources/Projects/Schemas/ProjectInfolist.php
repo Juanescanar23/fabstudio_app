@@ -49,6 +49,30 @@ class ProjectInfolist
                     ->label('Fecha de cierre')
                     ->date()
                     ->placeholder('-'),
+                TextEntry::make('is_public')
+                    ->label('Publicado en sitio público')
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Sí' : 'No'),
+                TextEntry::make('is_featured')
+                    ->label('Destacado')
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Sí' : 'No'),
+                TextEntry::make('public_slug')
+                    ->label('Slug público')
+                    ->placeholder('-'),
+                TextEntry::make('public_summary')
+                    ->label('Resumen público')
+                    ->placeholder('-')
+                    ->columnSpanFull(),
+                TextEntry::make('public_published_at')
+                    ->label('Publicado el')
+                    ->dateTime()
+                    ->placeholder('-'),
+                TextEntry::make('seo_title')
+                    ->label('Título SEO')
+                    ->placeholder('-'),
+                TextEntry::make('seo_description')
+                    ->label('Descripción SEO')
+                    ->placeholder('-')
+                    ->columnSpanFull(),
                 TextEntry::make('created_at')
                     ->label('Creado')
                     ->dateTime()

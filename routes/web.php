@@ -1,9 +1,15 @@
 <?php
 
 use App\Http\Controllers\Portal\ClientPortalController;
+use App\Http\Controllers\PublicSite\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
+Route::controller(PublicSiteController::class)->group(function () {
+    Route::get('/', 'home')->name('home');
+    Route::post('/contacto', 'storeContact')->name('public.contact.store');
+    Route::get('/proyectos', 'projects')->name('public.projects.index');
+    Route::get('/proyectos/{project:public_slug}', 'project')->name('public.projects.show');
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');

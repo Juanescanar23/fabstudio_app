@@ -42,3 +42,11 @@
 - Se cambio el locale por defecto de Laravel a `es` y se agregaron archivos base `lang/es` para autenticacion, contrasenas, paginacion y validaciones.
 - Se actualizo la suite de pruebas para validar textos en espanol.
 - Suite verificada tras localizacion: 40 tests pasaron, 96 assertions.
+- Se inicio Hito 5 con el sitio publico conectado al nucleo operativo.
+- Se agrego CMS basico con paginas editables, ajustes del sitio, biblioteca multimedia y administracion desde Filament.
+- Se extendio `Project` para publicar proyectos en la vitrina publica con slug, portada, resumen destacado y metadatos SEO.
+- Se reemplazo la ruta raiz por landing publica administrable y se agregaron rutas `/proyectos`, `/proyectos/{slug}` y `POST /contacto`.
+- El formulario publico crea registros en `Lead` con fuente `landing` y metadatos de ciudad/rango de inversion.
+- Se agregaron datos demo de CMS, multimedia, SEO y proyecto publico.
+- Se agregaron pruebas funcionales para landing, formulario y visibilidad de proyectos publicos.
+- Suite verificada tras Hito 5 parcial: 43 tests pasaron, 110 assertions.

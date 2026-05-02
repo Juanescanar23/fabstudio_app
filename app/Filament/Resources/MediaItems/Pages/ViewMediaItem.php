@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Filament\Resources\MediaItems\Pages;
+
+use App\Filament\Resources\MediaItems\MediaItemResource;
+use Filament\Resources\Pages\ViewRecord;
+
+class ViewMediaItem extends ViewRecord
+{
+    protected static string $resource = MediaItemResource::class;
+}

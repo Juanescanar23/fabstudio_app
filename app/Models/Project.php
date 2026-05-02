@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
@@ -25,6 +26,14 @@ class Project extends Model
         'budget_estimate',
         'starts_at',
         'ends_at',
+        'public_slug',
+        'public_summary',
+        'public_cover_path',
+        'is_public',
+        'is_featured',
+        'public_published_at',
+        'seo_title',
+        'seo_description',
     ];
 
     protected function casts(): array
@@ -33,7 +42,31 @@ class Project extends Model
             'budget_estimate' => 'decimal:2',
             'starts_at' => 'date',
             'ends_at' => 'date',
+            'is_public' => 'boolean',
+            'is_featured' => 'boolean',
+            'public_published_at' => 'datetime',
         ];
+    }
+
+    public function scopePublic($query)
+    {
+        return $query
+            ->where('is_public', true)
+            ->whereNotNull('public_published_at')
+            ->where('public_published_at', '<=', now());
+    }
+
+    public function publicCoverUrl(): ?string
+    {
+        if (! $this->public_cover_path) {
+            return null;
+        }
+
+        if (str_starts_with($this->public_cover_path, 'http://') || str_starts_with($this->public_cover_path, 'https://')) {
+            return $this->public_cover_path;
+        }
+
+        return Storage::disk('public')->url($this->public_cover_path);
     }
 
     public function client(): BelongsTo

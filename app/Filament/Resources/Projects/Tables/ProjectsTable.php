@@ -58,6 +58,21 @@ class ProjectsTable
                     ->label('Cierre')
                     ->date()
                     ->sortable(),
+                TextColumn::make('is_public')
+                    ->label('Público')
+                    ->badge()
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Sí' : 'No')
+                    ->color(fn (bool $state): string => $state ? 'success' : 'gray'),
+                TextColumn::make('is_featured')
+                    ->label('Destacado')
+                    ->badge()
+                    ->formatStateUsing(fn (bool $state): string => $state ? 'Sí' : 'No')
+                    ->color(fn (bool $state): string => $state ? 'warning' : 'gray'),
+                TextColumn::make('public_published_at')
+                    ->label('Publicado')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->label('Creado')
                     ->dateTime()
