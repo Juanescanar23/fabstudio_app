@@ -74,6 +74,7 @@ Objetivo: conectar la vitrina publica con leads, CMS basico, multimedia y SEO.
 - [x] Metadatos SEO administrables.
 - [x] Integracion segura con API Hostinger para listar, validar y sincronizar DNS.
 - [x] Auditoria real de zona DNS `fabstudio.com.co` via Hostinger API.
+- [x] Preparar configuracion Railway para app, worker, cron y variables de produccion.
 - [ ] Conexion de dominio principal y subdominio privado con destinos definitivos de produccion.
 
 Nota: la aplicacion ya tiene rutas separadas para sitio publico, panel y portal cliente. El subdominio privado previsto por la documentacion original es `app.fabstudio.com.co`; la conexion real queda pendiente de confirmar destinos Railway y aplicar DNS en Hostinger.
@@ -99,10 +100,10 @@ Objetivo: publicar una version estable y demostrable.
 - [ ] Pruebas de permisos y aislamiento.
 - [ ] Pruebas de carga/descarga documental.
 - [ ] Pruebas de PDF e IA.
-- [ ] Configuracion Railway app.
-- [ ] Configuracion Railway worker.
-- [ ] Configuracion Railway cron.
-- [ ] Variables de entorno documentadas.
+- [x] Configuracion Railway app.
+- [x] Configuracion Railway worker.
+- [x] Configuracion Railway cron.
+- [x] Variables de entorno documentadas.
 - [ ] Manual operativo breve.
 - [ ] Capacitacion y cierre.
 

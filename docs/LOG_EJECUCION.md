@@ -58,3 +58,7 @@
 - Se confirmo en la documentacion original que la aplicacion privada se aloja en `app.fabstudio.com.co`.
 - Se valido conexion real con Hostinger API y se audito la zona DNS actual de `fabstudio.com.co`; no se aplicaron cambios porque falta destino publico Railway para `app.fabstudio.com.co`.
 - Se configuro el remoto Git oficial `origin` hacia `git@github.com:Juanescanar23/fabstudio_app.git`.
+- Se subio la rama `main` al repositorio oficial `git@github.com:Juanescanar23/fabstudio_app.git`.
+- Se preparo configuracion Railway con servicios separados para app, worker y cron.
+- Se agrego plantilla de variables de produccion en `railway/variables.production.example`.
+- Se documento el flujo de despliegue y conexion DNS en `docs/RAILWAY_DEPLOYMENT.md`.

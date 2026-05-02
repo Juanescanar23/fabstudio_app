@@ -76,4 +76,6 @@ Credenciales cliente demo locales:
 
 - `docs/CHECKLIST_EJECUCION.md`
 - `docs/DECISIONES_ARQUITECTURA.md`
+- `docs/HOSTINGER_DNS.md`
 - `docs/LOG_EJECUCION.md`
+- `docs/RAILWAY_DEPLOYMENT.md`
