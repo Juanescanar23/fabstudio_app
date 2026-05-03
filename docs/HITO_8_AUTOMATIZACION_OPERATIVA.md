@@ -77,7 +77,7 @@ Railway ejecuta cron en UTC. La automatizacion es idempotente, por lo que una ej
 
 Estado de produccion:
 
-- `fabstudio-app`: online.
+- `fabstudio-app`: online, deployment `6366e66e-0deb-4d12-bf00-248b0b10179d`.
 - `fabstudio-worker`: online, deployment `106b5030-1b3d-4605-bd80-5569ad914af1`.
 - `fabstudio-cron`: online, deployment `05a0200e-5c5a-4c9f-9973-20903b3661f2`, schedule `*/15 * * * *`.
 - `php artisan automations:run --dry-run` ejecutado en produccion desde `fabstudio-app`: 0 candidatos actuales.
