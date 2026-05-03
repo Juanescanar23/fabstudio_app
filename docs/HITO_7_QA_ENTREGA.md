@@ -14,6 +14,7 @@ Cerrar una version estable, demostrable y operable de FAB STUDIO App en `https:/
 - Suite automatizada local pasa completa.
 - Smoke test real de cotizaciones PDF ejecutado en produccion.
 - Manual operativo creado.
+- Guia de seguridad y cierre creada.
 
 ## Checklist QA
 
@@ -22,13 +23,14 @@ Cerrar una version estable, demostrable y operable de FAB STUDIO App en `https:/
 | Salud app | `/up` responde `HTTP 200` | Aprobado | `curl -I https://app.fabstudio.com.co/up` |
 | Admin | `/admin` redirige a login seguro | Aprobado | `HTTP 302` hacia `/admin/login` |
 | PDF privado | Descarga sin sesion redirige a login | Aprobado | `/admin/quote-versions/1/pdf` devuelve `HTTP 302` |
-| Tests automatizados | Suite Laravel/Pest completa | Aprobado | 50 tests, 147 assertions |
+| Tests automatizados | Suite Laravel/Pest completa | Aprobado | 52 tests, 151 assertions |
 | Permisos admin | Cliente bloqueado en Filament | Aprobado | `AdminPanelAccessTest` |
 | Portal cliente | Aislamiento Cliente A / Cliente B | Aprobado | `ClientPortalTest` |
 | Documentos | Descarga privada por proyecto/cliente | Aprobado | `ClientPortalTest` |
 | Sitio publico | Home, formulario y proyectos publicos | Aprobado | `PublicSiteTest` |
 | Cotizaciones | Flujo plantilla, revision, aprobacion y PDF | Aprobado | `QuoteWorkflowTest` y smoke test produccion |
 | Espanol | Textos principales localizados | Aprobado parcial | Suite + revision visual previa |
+| Readiness tecnico | Comando `app:readiness-check` | Aprobado | Verificacion local y disponible para produccion |
 
 ## Smoke Tests De Produccion
 
@@ -78,7 +80,21 @@ Ultima verificacion ejecutada:
 ```text
 composer test
 Pint: passed
-Pest: 50 tests, 147 assertions
+Pest: 52 tests, 151 assertions
+```
+
+Comando de readiness agregado:
+
+```text
+php artisan app:readiness-check
+php artisan app:readiness-check --strict
+```
+
+Ultimo resultado local:
+
+```text
+Readiness check aprobado con advertencias.
+Advertencias esperadas: correo transaccional en log y sin plantillas comerciales activas en SQLite local.
 ```
 
 ## Pendientes Antes De Cierre Formal
@@ -111,3 +127,5 @@ Agenda:
 ## Decision De Entrega
 
 La aplicacion esta lista para QA funcional guiado con el cliente. El cierre formal debe esperar la rotacion de secretos, definicion de correo transaccional real y capacitacion.
+
+Documento de soporte: `docs/SEGURIDAD_CIERRE_PRODUCCION.md`.

@@ -143,10 +143,17 @@ Comandos operativos:
 
 ```bash
 composer test
+php artisan app:readiness-check
 git push
 railway up --service fabstudio-app
 railway service status --service fabstudio-app
 curl -I https://app.fabstudio.com.co/up
+```
+
+Verificacion estricta antes de entrega:
+
+```bash
+php artisan app:readiness-check --strict
 ```
 
 ## Seguridad Antes De Entrega
@@ -159,6 +166,8 @@ Acciones obligatorias antes de cierre formal:
 - Configurar correo transaccional real si se requiere envio de emails a clientes.
 - Definir politica de backups de base de datos.
 - Eliminar o archivar datos QA si no deben quedar visibles.
+
+Guia detallada: `docs/SEGURIDAD_CIERRE_PRODUCCION.md`.
 
 ## Soporte Basico
 

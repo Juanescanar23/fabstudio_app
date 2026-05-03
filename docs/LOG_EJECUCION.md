@@ -102,6 +102,10 @@
 - Se creo `docs/MANUAL_OPERATIVO.md` con flujos de clientes, proyectos, documentos, assets visuales, cotizaciones, portal cliente, CMS, despliegue y soporte basico.
 - Se creo `docs/HITO_7_QA_ENTREGA.md` con matriz QA, evidencias, criterios de aceptacion y pendientes antes de cierre formal.
 - Se actualizo el checklist principal: MySQL Railway provisionado, pruebas funcionales/permisos/documentos verificadas por suite, y manual operativo marcado como completado.
-- Se ejecuto `composer test`: Pint paso y Pest reporto 50 tests con 147 assertions.
+- Se ejecuto `composer test`: Pint paso y Pest reporto 52 tests con 151 assertions.
 - Se validaron endpoints de produccion: `/up` con `HTTP 200`, `/admin` con redireccion a `/admin/login` y PDF administrativo sin sesion con redireccion a login.
+- Se agrego comando `app:readiness-check` para validar APP_KEY, APP_URL, debug, base de datos, tablas criticas, usuario admin, storage, correo y plantillas activas.
+- Se agregaron pruebas automatizadas para el comando de readiness.
+- Se ejecuto readiness local: aprobado con advertencias esperadas por correo en `log` y ausencia de plantillas comerciales activas en SQLite local.
+- Se creo `docs/SEGURIDAD_CIERRE_PRODUCCION.md` con pasos de rotacion de Hostinger, Railway, password admin, correo transaccional, backups y datos QA.
 - Quedan pendientes de cierre formal: capacitacion, rotacion de secretos expuestos, password admin final, correo transaccional real y politica de backups.

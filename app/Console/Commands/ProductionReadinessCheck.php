@@ -1,0 +1,195 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Models\QuoteTemplate;
+use App\Models\User;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Throwable;
+
+class ProductionReadinessCheck extends Command
+{
+    protected $signature = 'app:readiness-check
+        {--json : Mostrar resultado en JSON}
+        {--strict : Devolver fallo si existen advertencias}';
+
+    protected $description = 'Valida condiciones tecnicas minimas antes de entrega o despliegue.';
+
+    public function handle(): int
+    {
+        $checks = collect([
+            $this->checkAppKey(),
+            $this->checkAppUrl(),
+            $this->checkDebugMode(),
+            $this->checkDatabase(),
+            $this->checkCriticalTables(),
+            $this->checkAdminUser(),
+            $this->checkStorageWritable(),
+            $this->checkMailer(),
+            $this->checkQuoteTemplates(),
+            $this->checkDefaultAdminPassword(),
+        ]);
+
+        if ($this->option('json')) {
+            $this->line($checks->toJson(JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        } else {
+            $this->table(
+                ['Estado', 'Chequeo', 'Detalle'],
+                $checks->map(fn (array $check): array => [
+                    strtoupper($check['status']),
+                    $check['name'],
+                    $check['detail'],
+                ])->all(),
+            );
+        }
+
+        $hasFailures = $checks->contains(fn (array $check): bool => $check['status'] === 'fail');
+        $hasWarnings = $checks->contains(fn (array $check): bool => $check['status'] === 'warn');
+
+        if ($hasFailures || ($this->option('strict') && $hasWarnings)) {
+            $this->error('Readiness check no aprobado.');
+
+            return self::FAILURE;
+        }
+
+        $this->info($hasWarnings
+            ? 'Readiness check aprobado con advertencias.'
+            : 'Readiness check aprobado.');
+
+        return self::SUCCESS;
+    }
+
+    /**
+     * @return array{name: string, status: string, detail: string}
+     */
+    private function check(string $name, string $status, string $detail): array
+    {
+        return compact('name', 'status', 'detail');
+    }
+
+    private function checkAppKey(): array
+    {
+        return filled(Config::get('app.key'))
+            ? $this->check('APP_KEY', 'pass', 'Llave de aplicacion configurada.')
+            : $this->check('APP_KEY', 'fail', 'Falta APP_KEY.');
+    }
+
+    private function checkAppUrl(): array
+    {
+        $url = (string) Config::get('app.url');
+
+        if (app()->isProduction() && ! str_starts_with($url, 'https://')) {
+            return $this->check('APP_URL', 'fail', 'En produccion debe usar HTTPS.');
+        }
+
+        return filled($url)
+            ? $this->check('APP_URL', 'pass', $url)
+            : $this->check('APP_URL', 'warn', 'APP_URL vacio.');
+    }
+
+    private function checkDebugMode(): array
+    {
+        if (app()->isProduction() && Config::get('app.debug')) {
+            return $this->check('APP_DEBUG', 'fail', 'APP_DEBUG no puede estar activo en produccion.');
+        }
+
+        return $this->check('APP_DEBUG', 'pass', Config::get('app.debug') ? 'Activo fuera de produccion.' : 'Inactivo.');
+    }
+
+    private function checkDatabase(): array
+    {
+        try {
+            DB::connection()->getPdo();
+        } catch (Throwable $exception) {
+            return $this->check('Base de datos', 'fail', 'No hay conexion: '.$exception->getMessage());
+        }
+
+        return $this->check('Base de datos', 'pass', 'Conexion disponible: '.DB::connection()->getName());
+    }
+
+    private function checkCriticalTables(): array
+    {
+        $missingTables = collect([
+            'users',
+            'roles',
+            'clients',
+            'projects',
+            'project_documents',
+            'document_versions',
+            'visual_assets',
+            'quotes',
+            'quote_versions',
+            'quote_templates',
+            'leads',
+        ])->reject(fn (string $table): bool => Schema::hasTable($table));
+
+        return $missingTables->isEmpty()
+            ? $this->check('Tablas criticas', 'pass', 'Todas las tablas esperadas existen.')
+            : $this->check('Tablas criticas', 'fail', 'Faltan: '.$missingTables->implode(', '));
+    }
+
+    private function checkAdminUser(): array
+    {
+        if (! Schema::hasTable('users') || ! Schema::hasTable('model_has_roles')) {
+            return $this->check('Usuario admin', 'fail', 'Tablas de usuarios/roles no disponibles.');
+        }
+
+        $exists = User::query()
+            ->whereHas('roles', fn ($query) => $query->whereIn('name', ['super_admin', 'admin']))
+            ->exists();
+
+        return $exists
+            ? $this->check('Usuario admin', 'pass', 'Existe al menos un usuario administrativo.')
+            : $this->check('Usuario admin', 'fail', 'No existe usuario con rol super_admin/admin.');
+    }
+
+    private function checkStorageWritable(): array
+    {
+        $path = storage_path('framework/readiness-check.tmp');
+
+        try {
+            file_put_contents($path, now()->toIso8601String());
+            @unlink($path);
+        } catch (Throwable $exception) {
+            return $this->check('Storage', 'fail', 'No se puede escribir en storage: '.$exception->getMessage());
+        }
+
+        return $this->check('Storage', 'pass', 'Storage escribible.');
+    }
+
+    private function checkMailer(): array
+    {
+        $mailer = (string) Config::get('mail.default');
+
+        if (in_array($mailer, ['log', 'array'], true)) {
+            return $this->check('Correo transaccional', 'warn', 'Mailer actual: '.$mailer.'. Configurar proveedor real antes de enviar emails a clientes.');
+        }
+
+        return $this->check('Correo transaccional', 'pass', 'Mailer configurado: '.$mailer.'.');
+    }
+
+    private function checkQuoteTemplates(): array
+    {
+        if (! Schema::hasTable('quote_templates')) {
+            return $this->check('Plantillas cotizacion', 'fail', 'Tabla quote_templates no existe.');
+        }
+
+        $count = QuoteTemplate::query()->where('status', 'active')->count();
+
+        return $count > 0
+            ? $this->check('Plantillas cotizacion', 'pass', $count.' plantilla(s) activa(s).')
+            : $this->check('Plantillas cotizacion', 'warn', 'No hay plantillas activas.');
+    }
+
+    private function checkDefaultAdminPassword(): array
+    {
+        if (app()->isProduction() && env('ADMIN_PASSWORD') === 'password') {
+            return $this->check('Password admin', 'fail', 'ADMIN_PASSWORD mantiene el valor inicial.');
+        }
+
+        return $this->check('Password admin', 'pass', 'No se detecto password inicial en configuracion.');
+    }
+}
