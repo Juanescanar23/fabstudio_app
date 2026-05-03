@@ -36,6 +36,11 @@ El repo incluye archivos separados para evitar mezclar procesos:
 
 En Railway, el servicio web puede usar `railway.json` directamente. Si se crean worker y cron desde el mismo repositorio via dashboard, cada servicio debe apuntar al archivo correspondiente en la opcion de config file path.
 
+Si se despliega por CLI local a servicios separados, empaquetar cada proceso con su config como `railway.json` raiz:
+
+- Worker: usar `railway/worker.json` como `railway.json`.
+- Cron: usar `railway/cron.json` como `railway.json`.
+
 ## Variables de entorno
 
 Usar como base:
@@ -107,6 +112,9 @@ Railway puede solicitar un registro TXT de verificacion. Si lo entrega, tambien 
 - Railway CLI instalado y autenticado.
 - Proyecto Railway `FABstudio_App` vinculado a `production`.
 - Servicio `fabstudio-app` desplegado con estado `SUCCESS`.
+- Servicio `fabstudio-worker` creado y desplegado con estado `SUCCESS`.
+- Servicio `fabstudio-cron` creado y desplegado con estado `SUCCESS`.
+- Cron configurado con schedule `*/15 * * * *`.
 - Healthcheck temporal validado en `https://fabstudio-app-production.up.railway.app/up`.
 - Dominio custom `https://app.fabstudio.com.co` creado en Railway y listado para `fabstudio-app`.
 - Healthcheck final validado en `https://app.fabstudio.com.co/up` con `HTTP 200` y SSL valido.

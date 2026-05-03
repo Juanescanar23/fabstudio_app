@@ -5,6 +5,7 @@
     "buildCommand": "npm run build"
   },
   "deploy": {
+    "cronSchedule": "*/15 * * * *",
     "startCommand": "bash ./railway/run-cron.sh",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10

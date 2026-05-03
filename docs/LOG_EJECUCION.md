@@ -119,3 +119,9 @@
 - Se ejecuto `composer test`: Pint paso y Pest reporto 54 tests con 171 assertions.
 - Se ejecuto `php artisan app:readiness-check`: aprobado con advertencias locales esperadas por correo en `log` y ausencia de plantillas activas en SQLite local.
 - Se ejecuto `php artisan automations:run --dry-run`: 2 candidatos evaluados localmente sin persistir logs.
+- Se desplego Hito 8/9 en `fabstudio-app`; deployment `085cf6fd-6d30-43f4-be61-47933d5ef7fc` quedo en `SUCCESS`.
+- Se validaron produccion y readiness ampliado: `/up` con `HTTP 200`, colas `database`, cookies seguras, automatizaciones activas, backups declarados como `railway-mysql` y unica advertencia por `MAIL_MAILER=log`.
+- Se crearon servicios Railway separados `fabstudio-worker` y `fabstudio-cron`.
+- Se desplego `fabstudio-worker`; deployment `106b5030-1b3d-4605-bd80-5569ad914af1` quedo en `SUCCESS`.
+- Se desplego `fabstudio-cron`; deployment `05a0200e-5c5a-4c9f-9973-20903b3661f2` quedo en `SUCCESS` con schedule `*/15 * * * *`.
+- Se corrigio arranque de worker/cron creando `bootstrap/cache` y permisos de storage en scripts Railway.

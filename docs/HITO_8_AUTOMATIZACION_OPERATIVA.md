@@ -75,6 +75,13 @@ Cron recomendado para Railway:
 
 Railway ejecuta cron en UTC. La automatizacion es idempotente, por lo que una ejecucion repetida no duplica correos ni logs.
 
+Estado de produccion:
+
+- `fabstudio-app`: online.
+- `fabstudio-worker`: online, deployment `106b5030-1b3d-4605-bd80-5569ad914af1`.
+- `fabstudio-cron`: online, deployment `05a0200e-5c5a-4c9f-9973-20903b3661f2`, schedule `*/15 * * * *`.
+- `php artisan automations:run --dry-run` ejecutado en produccion desde `fabstudio-app`: 0 candidatos actuales.
+
 ## Variables
 
 ```text

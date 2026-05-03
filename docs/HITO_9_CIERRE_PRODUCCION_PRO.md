@@ -36,6 +36,17 @@ Readiness check aprobado con advertencias.
 Advertencias locales: correo transaccional en log y sin plantillas activas en SQLite local.
 ```
 
+Resultado de produccion:
+
+```text
+Readiness check aprobado con advertencias.
+Colas: QUEUE_CONNECTION=database.
+Sesion segura: cookies seguras activas.
+Automatizaciones: motor activo y tabla de logs disponible.
+Backups: proveedor/politica declarada railway-mysql.
+Advertencia: correo transaccional en log.
+```
+
 ## Seguridad
 
 Pendientes obligatorios antes de declarar cierre formal:
