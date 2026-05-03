@@ -107,5 +107,7 @@
 - Se agrego comando `app:readiness-check` para validar APP_KEY, APP_URL, debug, base de datos, tablas criticas, usuario admin, storage, correo y plantillas activas.
 - Se agregaron pruebas automatizadas para el comando de readiness.
 - Se ejecuto readiness local: aprobado con advertencias esperadas por correo en `log` y ausencia de plantillas comerciales activas en SQLite local.
+- Se desplego el commit `0b4b813` en Railway; deployment `e667ffad-f82a-4014-aab2-3ce3ff1a06bb` quedo en estado `SUCCESS`.
+- Se ejecuto readiness en produccion via Railway SSH: aprobado con advertencia por correo transaccional en `log`; se confirmo 1 plantilla de cotizacion activa.
 - Se creo `docs/SEGURIDAD_CIERRE_PRODUCCION.md` con pasos de rotacion de Hostinger, Railway, password admin, correo transaccional, backups y datos QA.
 - Quedan pendientes de cierre formal: capacitacion, rotacion de secretos expuestos, password admin final, correo transaccional real y politica de backups.

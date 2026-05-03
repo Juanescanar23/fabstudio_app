@@ -13,6 +13,7 @@ Cerrar una version estable, demostrable y operable de FAB STUDIO App en `https:/
 - Healthcheck final responde `HTTP 200`.
 - Suite automatizada local pasa completa.
 - Smoke test real de cotizaciones PDF ejecutado en produccion.
+- Readiness tecnico ejecutado en produccion.
 - Manual operativo creado.
 - Guia de seguridad y cierre creada.
 
@@ -30,7 +31,7 @@ Cerrar una version estable, demostrable y operable de FAB STUDIO App en `https:/
 | Sitio publico | Home, formulario y proyectos publicos | Aprobado | `PublicSiteTest` |
 | Cotizaciones | Flujo plantilla, revision, aprobacion y PDF | Aprobado | `QuoteWorkflowTest` y smoke test produccion |
 | Espanol | Textos principales localizados | Aprobado parcial | Suite + revision visual previa |
-| Readiness tecnico | Comando `app:readiness-check` | Aprobado | Verificacion local y disponible para produccion |
+| Readiness tecnico | Comando `app:readiness-check` | Aprobado | Verificacion local y Railway produccion |
 
 ## Smoke Tests De Produccion
 
@@ -95,6 +96,15 @@ Ultimo resultado local:
 ```text
 Readiness check aprobado con advertencias.
 Advertencias esperadas: correo transaccional en log y sin plantillas comerciales activas en SQLite local.
+```
+
+Ultimo resultado en produccion:
+
+```text
+php artisan app:readiness-check
+Readiness check aprobado con advertencias.
+Advertencia: correo transaccional en log.
+Plantillas activas: 1.
 ```
 
 ## Pendientes Antes De Cierre Formal
