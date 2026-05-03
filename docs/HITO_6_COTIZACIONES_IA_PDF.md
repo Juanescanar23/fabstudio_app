@@ -48,3 +48,27 @@ Cobertura agregada:
 - Descarga protegida de PDF para admin y bloqueada para cliente.
 
 Resultado verificado: 50 tests, 147 assertions.
+
+## Smoke test en produccion
+
+Fecha: 2026-05-03
+
+Se ejecuto el flujo real dentro del servicio Railway `fabstudio-app`:
+
+- Se creo una plantilla QA activa porque produccion no tenia plantillas sembradas.
+- Se creo cliente, proyecto y cotizacion QA.
+- Se genero version desde plantilla.
+- Se marco como revisada.
+- Se aprobo.
+- Se exporto PDF.
+- Se verifico existencia fisica del archivo PDF.
+- Se valido que la ruta de descarga sin autenticacion redirige a login y no expone el archivo.
+
+Registro QA generado:
+
+- Cotizacion: `QA-H6-20260503001732`.
+- Version: `1`.
+- Estado de version: `exported`.
+- Estado de cotizacion: `exported`.
+- PDF: `quotes/qa-h6-20260503001732-v1.pdf`.
+- Healthcheck final: `https://app.fabstudio.com.co/up` respondio `HTTP 200`.

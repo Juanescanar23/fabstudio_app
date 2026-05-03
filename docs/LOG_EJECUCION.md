@@ -90,3 +90,8 @@
 - Se agrego plantilla demo de cotizacion al seeder.
 - Suite verificada tras Hito 6: 50 tests pasaron, 147 assertions.
 - Chequeo de estilo verificado con Pint: sin cambios pendientes.
+- Se ejecuto smoke test real del Hito 6 en produccion via Railway SSH.
+- Se genero la cotizacion QA `QA-H6-20260503001732`, se marco revisada, aprobada y exportada.
+- Se verifico que el PDF `quotes/qa-h6-20260503001732-v1.pdf` existe en el disco de la app.
+- Se valido que la ruta de descarga PDF sin autenticacion redirige a login, evitando exposicion publica del archivo.
+- Se confirmo healthcheck final `https://app.fabstudio.com.co/up` con `HTTP 200`.
