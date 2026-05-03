@@ -24,7 +24,7 @@ Objetivo: establecer autenticacion, permisos, datos base y panel inicial.
 - [x] Crear Laravel app.
 - [x] Instalar dependencias frontend.
 - [x] Configurar base de datos local de validacion con SQLite.
-- [ ] Provisionar MySQL local o Railway MySQL para entorno final.
+- [x] Provisionar MySQL Railway para entorno final.
 - [x] Instalar Filament.
 - [x] Crear usuario admin inicial.
 - [x] Instalar sistema de roles/permisos.
@@ -97,9 +97,9 @@ Objetivo: generar propuestas profesionales con historial, revision humana y expo
 
 Objetivo: publicar una version estable y demostrable.
 
-- [ ] Pruebas funcionales principales.
-- [ ] Pruebas de permisos y aislamiento.
-- [ ] Pruebas de carga/descarga documental.
+- [x] Pruebas funcionales principales.
+- [x] Pruebas de permisos y aislamiento.
+- [x] Pruebas de carga/descarga documental.
 - [x] Pruebas de PDF e IA.
 - [x] Configuracion Railway app.
 - [x] Configuracion Railway worker.
@@ -107,7 +107,7 @@ Objetivo: publicar una version estable y demostrable.
 - [x] Variables de entorno documentadas.
 - [x] Deploy app Railway exitoso en dominio temporal.
 - [x] Dominio custom Railway `app.fabstudio.com.co`.
-- [ ] Manual operativo breve.
+- [x] Manual operativo breve.
 - [ ] Capacitacion y cierre.
 
 ## Backlog Post-MVP

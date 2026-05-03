@@ -95,3 +95,13 @@
 - Se verifico que el PDF `quotes/qa-h6-20260503001732-v1.pdf` existe en el disco de la app.
 - Se valido que la ruta de descarga PDF sin autenticacion redirige a login, evitando exposicion publica del archivo.
 - Se confirmo healthcheck final `https://app.fabstudio.com.co/up` con `HTTP 200`.
+
+## 2026-05-03
+
+- Se inicio Hito 7 con documentacion operativa y checklist de aceptacion.
+- Se creo `docs/MANUAL_OPERATIVO.md` con flujos de clientes, proyectos, documentos, assets visuales, cotizaciones, portal cliente, CMS, despliegue y soporte basico.
+- Se creo `docs/HITO_7_QA_ENTREGA.md` con matriz QA, evidencias, criterios de aceptacion y pendientes antes de cierre formal.
+- Se actualizo el checklist principal: MySQL Railway provisionado, pruebas funcionales/permisos/documentos verificadas por suite, y manual operativo marcado como completado.
+- Se ejecuto `composer test`: Pint paso y Pest reporto 50 tests con 147 assertions.
+- Se validaron endpoints de produccion: `/up` con `HTTP 200`, `/admin` con redireccion a `/admin/login` y PDF administrativo sin sesion con redireccion a login.
+- Quedan pendientes de cierre formal: capacitacion, rotacion de secretos expuestos, password admin final, correo transaccional real y politica de backups.
