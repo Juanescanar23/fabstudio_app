@@ -18,6 +18,10 @@ class AdminPanelAccessTest extends TestCase
         $admin = User::query()
             ->whereHas('roles', fn ($query) => $query->where('name', 'super_admin'))
             ->firstOrFail();
+        $admin->forceFill([
+            'two_factor_secret' => encrypt('test-secret'),
+            'two_factor_confirmed_at' => now(),
+        ])->save();
 
         $this->actingAs($admin)
             ->get('/admin')

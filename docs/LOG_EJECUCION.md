@@ -125,3 +125,15 @@
 - Se desplego `fabstudio-worker`; deployment `106b5030-1b3d-4605-bd80-5569ad914af1` quedo en `SUCCESS`.
 - Se desplego `fabstudio-cron`; deployment `05a0200e-5c5a-4c9f-9973-20903b3661f2` quedo en `SUCCESS` con schedule `*/15 * * * *`.
 - Se corrigio arranque de worker/cron creando `bootstrap/cache` y permisos de storage en scripts Railway.
+- Se genero y aplico password admin final para `admin@fabstudio.com.co`; las credenciales quedaron fuera del repositorio en `/Users/juanescanar/.codex/memories/fabstudio_admin_security_2026-05-03.json`.
+- Se activo y confirmo 2FA para el admin en produccion.
+- Se detecto que Filament no estaba exigiendo el desafio 2FA aunque el usuario tuviera secreto Fortify; se implemento puente `User` -> Filament MFA y se activo `AppAuthentication` requerido en el panel admin.
+- Se creo cuenta QA cliente vinculada a `Cliente QA Hito 6`; credenciales fuera del repositorio en `/Users/juanescanar/.codex/memories/fabstudio_client_qa_credentials_2026-05-03.json`.
+- Se ejecuto QA responsive con Playwright sobre produccion y se generaron 21 capturas mobile/tablet/desktop en `docs/evidencias/hito-9/responsive/`, incluyendo desafio MFA admin.
+- Se documento QA responsive en `docs/QA_RESPONSIVE_HITO_9.md`.
+- Se documento runbook de backups/restauracion en `docs/BACKUPS_RESTAURACION.md`; Railway API rechazo activar schedule con `Not Authorized`, por lo que queda accion de dashboard/proveedor.
+- Se preparo material de capacitacion final en `docs/CAPACITACION_FINAL.md`.
+- Se ejecuto `composer test`: Pint paso y Pest reporto 56 tests con 177 assertions.
+- Se desplego ajuste MFA a `fabstudio-app`; deployment `9c350be5-e90f-4a58-985b-36adaa7faa22` quedo en `SUCCESS`.
+- Se ejecuto readiness en produccion: aprobado con unica advertencia por `MAIL_MAILER=log`; `2FA admin` quedo en `PASS`.
+- Se valido healthcheck final `https://app.fabstudio.com.co/up` con `HTTP 200`.

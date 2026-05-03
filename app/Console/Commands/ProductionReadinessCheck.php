@@ -27,6 +27,7 @@ class ProductionReadinessCheck extends Command
             $this->checkDatabase(),
             $this->checkCriticalTables(),
             $this->checkAdminUser(),
+            $this->checkAdminTwoFactor(),
             $this->checkStorageWritable(),
             $this->checkQueueInfrastructure(),
             $this->checkMailer(),
@@ -152,6 +153,29 @@ class ProductionReadinessCheck extends Command
         return $exists
             ? $this->check('Usuario admin', 'pass', 'Existe al menos un usuario administrativo.')
             : $this->check('Usuario admin', 'fail', 'No existe usuario con rol super_admin/admin.');
+    }
+
+    private function checkAdminTwoFactor(): array
+    {
+        if (! Schema::hasTable('users') || ! Schema::hasTable('model_has_roles')) {
+            return $this->check('2FA admin', 'fail', 'Tablas de usuarios/roles no disponibles.');
+        }
+
+        $adminUsers = User::query()
+            ->whereHas('roles', fn ($query) => $query->whereIn('name', ['super_admin', 'admin']))
+            ->get(['id', 'email', 'two_factor_secret', 'two_factor_confirmed_at']);
+
+        if ($adminUsers->isEmpty()) {
+            return $this->check('2FA admin', 'fail', 'No hay usuarios administrativos para validar.');
+        }
+
+        $withoutTwoFactor = $adminUsers
+            ->reject(fn (User $user): bool => filled($user->two_factor_secret) && filled($user->two_factor_confirmed_at))
+            ->pluck('email');
+
+        return $withoutTwoFactor->isEmpty()
+            ? $this->check('2FA admin', 'pass', 'Todos los usuarios administrativos tienen 2FA confirmado.')
+            : $this->check('2FA admin', 'warn', 'Admins sin 2FA confirmado: '.$withoutTwoFactor->implode(', '));
     }
 
     private function checkStorageWritable(): array

@@ -14,7 +14,16 @@ Secretos a rotar:
 
 - Token API Hostinger.
 - Token API Railway.
-- Password inicial del administrador si todavia conserva el valor temporal.
+
+Estado actualizado 2026-05-03:
+
+- Password admin final aplicada en produccion.
+- 2FA confirmado para el admin y exigido por el panel Filament.
+- Credenciales finales guardadas fuera del repo:
+
+```text
+/Users/juanescanar/.codex/memories/fabstudio_admin_security_2026-05-03.json
+```
 
 ## Rotacion Hostinger
 
@@ -60,7 +69,9 @@ Despues de cambiarla:
 
 ## Correo Transaccional
 
-Actualmente la app puede enviar notificaciones de cotizaciones, pero antes de enviar emails reales a clientes se debe configurar un proveedor.
+Actualmente la app puede generar notificaciones de cotizaciones y automatizaciones, pero antes de enviar emails reales a clientes se debe configurar un proveedor.
+
+No marcar este punto como cerrado con `MAIL_MAILER=log`; ese modo solo registra correos en logs.
 
 Opciones compatibles:
 
@@ -99,6 +110,12 @@ Checklist:
 - Documentar responsable.
 - Probar al menos una restauracion en entorno no productivo cuando exista staging.
 
+Detalle operativo:
+
+- Ver `docs/BACKUPS_RESTAURACION.md`.
+- El token actual permite listar el volumen `mysql-volume`, pero Railway rechazo activar schedule/restore por API con `Not Authorized`.
+- La activacion final debe realizarse desde Railway dashboard o con token con permisos suficientes.
+
 ## Datos QA
 
 Datos QA conocidos:
@@ -131,6 +148,7 @@ Condicion para cierre formal:
 - Dominio final en `HTTP 200`.
 - Tokens rotados.
 - Password admin final actualizada.
+- 2FA admin exigido por panel.
 - Correo real configurado o decision formal de mantenerlo desactivado.
 - Backups definidos.
 - Capacitacion ejecutada.

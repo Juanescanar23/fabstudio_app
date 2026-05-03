@@ -20,6 +20,7 @@ El comando `php artisan app:readiness-check` valida ahora:
 - Conexion a base de datos.
 - Tablas criticas, incluyendo jobs, failed jobs, cache locks y automation logs.
 - Usuario admin.
+- 2FA confirmado para usuarios administrativos.
 - Storage escribible.
 - Cola no sincronica en produccion.
 - Correo transaccional.
@@ -44,23 +45,38 @@ Colas: QUEUE_CONNECTION=database.
 Sesion segura: cookies seguras activas.
 Automatizaciones: motor activo y tabla de logs disponible.
 Backups: proveedor/politica declarada railway-mysql.
+2FA admin: todos los usuarios administrativos tienen 2FA confirmado.
 Advertencia: correo transaccional en log.
 ```
 
 ## Seguridad
 
-Pendientes obligatorios antes de declarar cierre formal:
+Estado ejecutado:
 
-- Rotar token de Railway.
-- Rotar token de Hostinger.
-- Cambiar password admin final.
-- Activar 2FA en usuarios administrativos.
-- Confirmar `SESSION_SECURE_COOKIE=true`.
-- Mantener secretos fuera del repositorio.
+- Password admin final generada y aplicada en produccion.
+- 2FA confirmado para `admin@fabstudio.com.co`.
+- 2FA nativo de Filament activado en el panel admin.
+- Cuenta QA cliente creada para validar portal responsive.
+- Secretos guardados fuera del repositorio con permisos `600`.
+- `SESSION_SECURE_COOKIE=true` confirmado en produccion.
+
+Archivos privados locales con credenciales, no versionados:
+
+```text
+/Users/juanescanar/.codex/memories/fabstudio_admin_security_2026-05-03.json
+/Users/juanescanar/.codex/memories/fabstudio_client_qa_credentials_2026-05-03.json
+```
+
+Pendientes que requieren accion en dashboard externo:
+
+- Rotar token de Railway y revocar el anterior.
+- Rotar token de Hostinger y revocar el anterior.
 
 ## Correo Transaccional
 
 Estado actual: infraestructura lista, proveedor real pendiente.
+
+No se configuro un mailer real porque no existen credenciales SMTP/Resend/Postmark/SES en el entorno. Mantener `MAIL_MAILER=log` evita enviar correos falsos o incompletos a clientes.
 
 Recomendacion operativa:
 
@@ -90,18 +106,24 @@ FABSTUDIO_BACKUP_OWNER_EMAIL=operaciones@fabstudio.com.co
 
 ## QA Responsive
 
-Estado: responsive funcional por base Filament/Tailwind, pendiente certificacion visual final.
+Estado: certificado visualmente con capturas Playwright.
 
 Matriz minima:
 
 | Vista | Mobile 390px | Tablet 768px | Desktop 1440px | Estado |
 | --- | --- | --- | --- | --- |
-| Login | Pendiente screenshot | Pendiente screenshot | Validado funcional | Pendiente visual |
-| Admin dashboard | Pendiente screenshot | Pendiente screenshot | Validado funcional | Pendiente visual |
-| Listados Filament | Pendiente screenshot | Pendiente screenshot | Validado funcional | Pendiente visual |
-| Portal cliente | Pendiente screenshot | Pendiente screenshot | Validado por tests | Pendiente visual |
-| Sitio publico | Pendiente screenshot | Pendiente screenshot | Validado por tests | Pendiente visual |
+| Login | Captura generada | Captura generada | Captura generada | Aprobado |
+| Admin dashboard | Captura generada | Captura generada | Captura generada | Aprobado |
+| Listados Filament | Captura generada | Captura generada | Captura generada | Aprobado |
+| Portal cliente | Captura generada | Captura generada | Captura generada | Aprobado |
+| Sitio publico | Captura generada | Captura generada | Captura generada | Aprobado |
+| Desafio MFA admin | Captura generada | Captura generada | Captura generada | Aprobado |
 | PDF cotizacion | No aplica | No aplica | Validado funcional | Aprobado tecnico |
+
+Evidencia:
+
+- `docs/QA_RESPONSIVE_HITO_9.md`
+- `docs/evidencias/hito-9/responsive/`
 
 Criterio de aceptacion:
 
@@ -112,6 +134,10 @@ Criterio de aceptacion:
 
 ## Capacitacion
 
+Material preparado:
+
+- `docs/CAPACITACION_FINAL.md`
+
 Sesiones sugeridas:
 
 1. Administracion interna: leads, clientes, proyectos, documentos, assets, cotizaciones.
@@ -121,7 +147,7 @@ Sesiones sugeridas:
 
 ## Criterio De Cierre
 
-El proyecto puede cerrarse formalmente cuando:
+El cierre tecnico queda avanzado, pero el cierre formal con cliente requiere:
 
 - `composer test` pasa.
 - `app:readiness-check --strict` pasa en produccion.

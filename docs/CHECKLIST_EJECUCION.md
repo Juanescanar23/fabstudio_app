@@ -138,11 +138,13 @@ Objetivo: cerrar produccion con seguridad, backups, responsive QA, capacitacion 
 - [x] Documentar politica de seguridad y cierre.
 - [x] Documentar matriz QA responsive.
 - [x] Documentar variables de backup y automatizacion.
+- [x] Cambiar password admin final.
+- [x] Activar 2FA admin y exigir MFA en panel Filament.
+- [x] Ejecutar QA responsive con capturas mobile/tablet/desktop.
+- [x] Preparar material de capacitacion final.
 - [ ] Rotar tokens Railway y Hostinger.
-- [ ] Cambiar password admin final.
 - [ ] Activar correo transaccional real.
 - [ ] Confirmar backups automáticos MySQL.
-- [ ] Ejecutar QA responsive con capturas mobile/tablet/desktop.
 - [ ] Ejecutar capacitacion final.
 - [ ] Ejecutar `app:readiness-check --strict` sin advertencias en produccion.
 

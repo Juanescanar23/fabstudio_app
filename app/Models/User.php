@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -18,7 +19,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 #[Fillable(['client_id', 'name', 'email', 'password'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasAppAuthentication
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, HasRoles, Notifiable, TwoFactorAuthenticatable;
@@ -33,6 +34,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 
@@ -51,6 +53,34 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->hasAnyRole(['super_admin', 'admin']);
+    }
+
+    public function getAppAuthenticationSecret(): ?string
+    {
+        if (blank($this->two_factor_secret)) {
+            return null;
+        }
+
+        return decrypt($this->two_factor_secret);
+    }
+
+    public function saveAppAuthenticationSecret(?string $secret): void
+    {
+        $this->forceFill(blank($secret)
+            ? [
+                'two_factor_secret' => null,
+                'two_factor_recovery_codes' => null,
+                'two_factor_confirmed_at' => null,
+            ]
+            : [
+                'two_factor_secret' => encrypt($secret),
+                'two_factor_confirmed_at' => now(),
+            ])->save();
+    }
+
+    public function getAppAuthenticationHolderName(): string
+    {
+        return $this->email;
     }
 
     public function client(): BelongsTo
