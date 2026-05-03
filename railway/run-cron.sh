@@ -3,4 +3,4 @@ set -euo pipefail
 
 php artisan config:cache
 
-exec php artisan schedule:work
+exec php artisan automations:run

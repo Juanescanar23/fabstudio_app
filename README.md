@@ -6,7 +6,7 @@ Repositorio oficial: `git@github.com:Juanescanar23/fabstudio_app.git`
 
 ## Estado
 
-Hitos 1, 2, 3, 4 y 5 ejecutados sobre base Laravel + Livewire + Filament. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
+Hitos 1 a 8 ejecutados sobre base Laravel + Livewire + Filament. El Hito 9 esta en cierre profesional: correo real, backups, rotacion de secretos, QA responsive y capacitacion. La documentacion base esta en `DOCUMENTACION/` y el seguimiento de ejecucion esta en `docs/`.
 
 El panel administrativo esta disponible en `/admin` con recursos iniciales para leads, clientes, proyectos, fases, hitos, documentos, assets visuales, cotizaciones y comentarios.
 
@@ -21,6 +21,8 @@ El portal cliente esta disponible en `/portal` con dashboard, timeline, boveda d
 5. Landing-App, CMS y marca.
 6. Cotizaciones, IA y PDF.
 7. QA, despliegue y entrega.
+8. Automatizacion operativa.
+9. Cierre profesional de produccion.
 
 ## Stack Objetivo
 
@@ -77,5 +79,7 @@ Credenciales cliente demo locales:
 - `docs/CHECKLIST_EJECUCION.md`
 - `docs/DECISIONES_ARQUITECTURA.md`
 - `docs/HOSTINGER_DNS.md`
+- `docs/HITO_8_AUTOMATIZACION_OPERATIVA.md`
+- `docs/HITO_9_CIERRE_PRODUCCION_PRO.md`
 - `docs/LOG_EJECUCION.md`
 - `docs/RAILWAY_DEPLOYMENT.md`

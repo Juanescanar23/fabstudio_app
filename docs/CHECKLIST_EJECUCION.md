@@ -110,12 +110,48 @@ Objetivo: publicar una version estable y demostrable.
 - [x] Manual operativo breve.
 - [ ] Capacitacion y cierre.
 
+## Hito 8 - Automatizacion Operativa
+
+Objetivo: convertir el MVP en una operacion con seguimiento automatico, colas, cron, notificaciones y trazabilidad.
+
+- [x] Investigar patron oficial Laravel Scheduler, queues y Railway cron.
+- [x] Crear motor de automatizaciones operativas.
+- [x] Crear tabla de logs idempotentes `automation_logs`.
+- [x] Crear recurso Filament para auditar automatizaciones.
+- [x] Encolar notificaciones transaccionales.
+- [x] Automatizar seguimiento de leads nuevos.
+- [x] Automatizar alertas de hitos por vencer y vencidos.
+- [x] Automatizar avisos de documentos publicados.
+- [x] Automatizar avisos de assets visuales publicados.
+- [x] Automatizar alertas de cotizaciones proximas a vencer.
+- [x] Crear comando `automations:run` con modo seco.
+- [x] Configurar cron Railway para tarea corta.
+- [x] Agregar pruebas de automatizacion e idempotencia.
+- [ ] Configurar proveedor real de correo.
+- [ ] Aprobar copy final de emails con FAB STUDIO.
+
+## Hito 9 - Cierre Profesional de Produccion
+
+Objetivo: cerrar produccion con seguridad, backups, responsive QA, capacitacion y criterios de aceptacion estrictos.
+
+- [x] Ampliar `app:readiness-check` con colas, sesiones seguras, automatizaciones y backups.
+- [x] Documentar politica de seguridad y cierre.
+- [x] Documentar matriz QA responsive.
+- [x] Documentar variables de backup y automatizacion.
+- [ ] Rotar tokens Railway y Hostinger.
+- [ ] Cambiar password admin final.
+- [ ] Activar correo transaccional real.
+- [ ] Confirmar backups automáticos MySQL.
+- [ ] Ejecutar QA responsive con capturas mobile/tablet/desktop.
+- [ ] Ejecutar capacitacion final.
+- [ ] Ejecutar `app:readiness-check --strict` sin advertencias en produccion.
+
 ## Backlog Post-MVP
 
 - [ ] OCR documental avanzado.
 - [ ] Dashboards ejecutivos profundos.
 - [ ] Firma digital avanzada.
-- [ ] Automatizaciones comerciales complejas.
+- [ ] Automatizaciones comerciales avanzadas con WhatsApp/CRM.
 - [ ] App movil nativa.
 - [ ] AR avanzada o modelado 3D nuevo.
 - [ ] Integraciones contables o CRM externo.

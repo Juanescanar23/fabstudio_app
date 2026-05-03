@@ -28,8 +28,12 @@ class ProductionReadinessCheck extends Command
             $this->checkCriticalTables(),
             $this->checkAdminUser(),
             $this->checkStorageWritable(),
+            $this->checkQueueInfrastructure(),
             $this->checkMailer(),
+            $this->checkSecureSession(),
             $this->checkQuoteTemplates(),
+            $this->checkAutomationInfrastructure(),
+            $this->checkBackupPolicy(),
             $this->checkDefaultAdminPassword(),
         ]);
 
@@ -115,6 +119,9 @@ class ProductionReadinessCheck extends Command
         $missingTables = collect([
             'users',
             'roles',
+            'jobs',
+            'failed_jobs',
+            'cache_locks',
             'clients',
             'projects',
             'project_documents',
@@ -123,6 +130,7 @@ class ProductionReadinessCheck extends Command
             'quotes',
             'quote_versions',
             'quote_templates',
+            'automation_logs',
             'leads',
         ])->reject(fn (string $table): bool => Schema::hasTable($table));
 
@@ -160,6 +168,21 @@ class ProductionReadinessCheck extends Command
         return $this->check('Storage', 'pass', 'Storage escribible.');
     }
 
+    private function checkQueueInfrastructure(): array
+    {
+        $queue = (string) Config::get('queue.default');
+
+        if (app()->isProduction() && $queue === 'sync') {
+            return $this->check('Colas', 'fail', 'QUEUE_CONNECTION no debe ser sync en produccion.');
+        }
+
+        if ($queue === 'database' && (! Schema::hasTable('jobs') || ! Schema::hasTable('failed_jobs'))) {
+            return $this->check('Colas', 'fail', 'Faltan tablas jobs/failed_jobs para cola database.');
+        }
+
+        return $this->check('Colas', 'pass', 'QUEUE_CONNECTION='.$queue.'.');
+    }
+
     private function checkMailer(): array
     {
         $mailer = (string) Config::get('mail.default');
@@ -169,6 +192,15 @@ class ProductionReadinessCheck extends Command
         }
 
         return $this->check('Correo transaccional', 'pass', 'Mailer configurado: '.$mailer.'.');
+    }
+
+    private function checkSecureSession(): array
+    {
+        if (app()->isProduction() && ! Config::get('session.secure')) {
+            return $this->check('Sesion segura', 'fail', 'SESSION_SECURE_COOKIE debe estar activo en produccion.');
+        }
+
+        return $this->check('Sesion segura', 'pass', Config::get('session.secure') ? 'Cookies seguras activas.' : 'Cookies seguras no requeridas fuera de produccion.');
     }
 
     private function checkQuoteTemplates(): array
@@ -182,6 +214,32 @@ class ProductionReadinessCheck extends Command
         return $count > 0
             ? $this->check('Plantillas cotizacion', 'pass', $count.' plantilla(s) activa(s).')
             : $this->check('Plantillas cotizacion', 'warn', 'No hay plantillas activas.');
+    }
+
+    private function checkAutomationInfrastructure(): array
+    {
+        if (! Schema::hasTable('automation_logs')) {
+            return $this->check('Automatizaciones', 'fail', 'Tabla automation_logs no existe.');
+        }
+
+        if (! Config::get('fabstudio.automations.enabled')) {
+            return $this->check('Automatizaciones', 'warn', 'Automatizaciones desactivadas por configuracion.');
+        }
+
+        return $this->check('Automatizaciones', 'pass', 'Motor operativo activo y tabla de logs disponible.');
+    }
+
+    private function checkBackupPolicy(): array
+    {
+        if (! app()->isProduction()) {
+            return $this->check('Backups', 'pass', 'Politica de backups validable en produccion.');
+        }
+
+        $provider = (string) Config::get('fabstudio.backups.provider');
+
+        return filled($provider)
+            ? $this->check('Backups', 'pass', 'Proveedor/politica declarada: '.$provider.'.')
+            : $this->check('Backups', 'warn', 'Declarar FABSTUDIO_BACKUP_PROVIDER y retencion antes del cierre formal.');
     }
 
     private function checkDefaultAdminPassword(): array

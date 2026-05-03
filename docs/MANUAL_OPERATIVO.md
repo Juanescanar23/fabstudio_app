@@ -129,6 +129,32 @@ Regla de seguridad:
 6. Actualizar imagenes publicas o URLs externas.
 7. Validar sitio publico en `/` y `/proyectos`.
 
+## Automatizaciones
+
+Las automatizaciones operan desde cron/colas y dejan evidencia en el panel administrativo.
+
+Ubicacion:
+
+- Panel: `Automatizacion > Registro de automatizaciones`.
+- Comando manual: `php artisan automations:run`.
+- Modo seco: `php artisan automations:run --dry-run`.
+
+Automatizaciones activas:
+
+- Prospectos nuevos sin seguimiento.
+- Hitos proximos a vencer.
+- Hitos vencidos.
+- Documentos publicados para cliente.
+- Assets visuales publicados para cliente.
+- Cotizaciones proximas a vencer.
+
+Reglas operativas:
+
+- Un registro con estado `sent` indica que la notificacion fue despachada al sistema de correo.
+- Un registro con estado `skipped` indica duplicado o ausencia de destinatarios.
+- Si `MAIL_MAILER=log`, los correos no salen a clientes reales.
+- Si se publica por error un documento o asset para cliente, corregir visibilidad/estado y revisar el log.
+
 ## Despliegue
 
 El repositorio oficial es:
@@ -144,6 +170,7 @@ Comandos operativos:
 ```bash
 composer test
 php artisan app:readiness-check
+php artisan automations:run --dry-run
 git push
 railway up --service fabstudio-app
 railway service status --service fabstudio-app

@@ -111,3 +111,11 @@
 - Se ejecuto readiness en produccion via Railway SSH: aprobado con advertencia por correo transaccional en `log`; se confirmo 1 plantilla de cotizacion activa.
 - Se creo `docs/SEGURIDAD_CIERRE_PRODUCCION.md` con pasos de rotacion de Hostinger, Railway, password admin, correo transaccional, backups y datos QA.
 - Quedan pendientes de cierre formal: capacitacion, rotacion de secretos expuestos, password admin final, correo transaccional real y politica de backups.
+- Se inicio Hito 8 como automatizacion operativa profunda: motor de automatizaciones, job encolable, comando `automations:run`, tabla `automation_logs` y recurso Filament de auditoria.
+- Se agregaron automatizaciones para prospectos nuevos, hitos proximos/vencidos, documentos publicados, assets visuales publicados y cotizaciones proximas a vencer.
+- Se ajusto cron Railway para ejecutar una tarea corta (`php artisan automations:run`) alineada con el modelo oficial de Railway cron.
+- Se inicio Hito 9 como cierre profesional de produccion: readiness ampliado, seguridad, backups, correo real, QA responsive y capacitacion.
+- Se agregaron `docs/HITO_8_AUTOMATIZACION_OPERATIVA.md` y `docs/HITO_9_CIERRE_PRODUCCION_PRO.md`.
+- Se ejecuto `composer test`: Pint paso y Pest reporto 54 tests con 171 assertions.
+- Se ejecuto `php artisan app:readiness-check`: aprobado con advertencias locales esperadas por correo en `log` y ausencia de plantillas activas en SQLite local.
+- Se ejecuto `php artisan automations:run --dry-run`: 2 candidatos evaluados localmente sin persistir logs.

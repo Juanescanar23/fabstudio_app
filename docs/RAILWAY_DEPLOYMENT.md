@@ -22,7 +22,7 @@ git@github.com:Juanescanar23/fabstudio_app.git
 
 - `fabstudio-app`: servicio web Laravel.
 - `fabstudio-worker`: worker de colas Laravel.
-- `fabstudio-cron`: scheduler Laravel.
+- `fabstudio-cron`: cron operativo Laravel.
 - `MySQL`: base de datos gestionada Railway.
 
 ## Configuracion por servicio
@@ -32,7 +32,7 @@ El repo incluye archivos separados para evitar mezclar procesos:
 - `railway.json`: configuracion principal usada por Railway CLI para el servicio web.
 - `railway/app.json`: servicio web, build frontend, migraciones y seed base antes del deploy.
 - `railway/worker.json`: worker con `php artisan queue:work database`.
-- `railway/cron.json`: scheduler con `php artisan schedule:work`.
+- `railway/cron.json`: cron corto con `php artisan automations:run`.
 
 En Railway, el servicio web puede usar `railway.json` directamente. Si se crean worker y cron desde el mismo repositorio via dashboard, cada servicio debe apuntar al archivo correspondiente en la opcion de config file path.
 
@@ -74,6 +74,8 @@ SESSION_DRIVER=database
 4. En servicio web, usar config file path `railway/app.json`.
 5. Crear servicio worker desde el mismo repo y usar `railway/worker.json`.
 6. Crear servicio cron desde el mismo repo y usar `railway/cron.json`.
+   - Cron Schedule recomendado: `*/15 * * * *`.
+   - Railway evalua cron en UTC y espera que el proceso termine.
 7. Desplegar primero `fabstudio-app`; las migraciones y roles/admin base corren en `railway/init-app.sh`.
 8. Validar `/up` y acceso inicial al panel `/admin`.
 9. Agregar dominio personalizado `app.fabstudio.com.co` en Railway.

@@ -4,16 +4,17 @@ namespace App\Notifications;
 
 use App\Models\QuoteVersion;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class QuoteVersionExportedNotification extends Notification
+class QuoteVersionExportedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
     public function __construct(private readonly QuoteVersion $version)
     {
-        //
+        $this->onQueue('notifications');
     }
 
     /**
